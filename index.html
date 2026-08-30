@@ -17,7 +17,7 @@
 
   gtag('config', 'G-QRT7QBW2EH');
 </script>
-
+    
     <!-- Open Graph / Social Meta -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sleep Cycle Calculator | Bedtime & Wake Up Time Calculator">
@@ -80,7 +80,7 @@
                 "logo": "https://sleepcalchq.com/assets/logo.png",
                 "contactPoint": {
                     "@type": "ContactPoint",
-                    "email": "supportsleepcalchq@gmail.com",
+                    "email": "support@sleepcalchq.com",
                     "contactType": "customer support"
                 }
             }, {
@@ -472,99 +472,7 @@
         }
 
         .mt-2 {
-            margin-top: 0.5rem; /* ===================== Nav Dropdown Menu ===================== */
-.nav-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.nav-dropdown-btn {
-    padding: 0.375rem 0.875rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-family: inherit;
-    transition: all 0.2s;
-}
-
-.nav-dropdown-btn:hover,
-.nav-dropdown:hover .nav-dropdown-btn {
-    color: var(--violet);
-}
-
-.nav-dropdown-btn svg {
-    width: 12px;
-    height: 12px;
-    transition: transform 0.2s ease;
-}
-
-.nav-dropdown:hover .nav-dropdown-btn svg {
-    transform: rotate(180deg);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    min-width: 220px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 0.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    display: none;
-    flex-direction: column;
-    gap: 0.25rem;
-    z-index: 100;
-    backdrop-filter: blur(16px);
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    display: flex;
-}
-
-.dropdown-menu a {
-    padding: 0.5rem 0.75rem !important;
-    border-radius: 10px !important;
-    font-size: 0.75rem !important;
-    color: var(--text) !important;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.dropdown-menu a:hover {
-    background: rgba(99, 102, 241, 0.1) !important;
-    color: var(--violet) !important;
-}
-
-/* Mobile Dropdown Submenu */
-.mobile-nav-group {
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-.mobile-group-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--violet);
-    padding: 0.5rem 0.875rem 0.25rem;
-}
-.mobile-sub-link {
-    padding-left: 1.5rem !important;
-    font-size: 0.8125rem !important;
-    color: var(--text-muted) !important;
-}
+            margin-top: 0.5rem;
         }
 
         .mt-3 {
@@ -2093,27 +2001,13 @@
                 <span class="logo-badge">Pro</span>
             </a>
 
-           <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
-    <!-- Dropdown Menu: Sleep Cycle Calculator -->
-    <div class="nav-dropdown">
-        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            Sleep Cycle Calculator
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="dropdown-menu">
-            <a href="#calculator-hub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Sleep Cycle Calculator
-            </a>
-            <!-- Aage chal kar agar naye calculators add karne ho to yahan <a> tag daal sakte hain -->
-        </div>
-    </div>
-
-    <a href="#nap-optimizer">Power Naps</a>
-    <a href="#sound-synthesizer">Sleep Sounds</a>
-    <a href="#sleep-debt">Sleep Debt</a>
-    <a href="#science-guide">Sleep Science</a>
-</nav>
+            <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
+                <a href="#calculator-hub" class="active">Sleep Calculator</a>
+                <a href="#nap-optimizer">Power Naps</a>
+                <a href="#sound-synthesizer">Sleep Sounds</a>
+                <a href="#sleep-debt">Sleep Debt</a>
+                <a href="#science-guide">Sleep Science</a>
+            </nav>
 
             <div class="header-actions">
                 <button id="theme-toggle" class="header-btn" aria-label="Toggle dark/light theme" aria-expanded="false" aria-controls="theme-icon">
@@ -2130,16 +2024,13 @@
         </div>
 
         <!-- Mobile Navigation Dropdown -->
-<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <div class="mobile-nav-group">
-        <div class="mobile-group-title">Sleep Cycle Calculator</div>
-        <a href="#calculator-hub" class="mobile-sub-link">⚡ Sleep Cycle Calculator</a>
-    </div>
-    <a href="#nap-optimizer">Power Naps</a>
-    <a href="#sound-synthesizer">Sleep Sounds</a>
-    <a href="#sleep-debt">Sleep Debt</a>
-    <a href="#science-guide">Sleep Science</a>
-</div>
+        <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+            <a href="#calculator-hub">Sleep Calculator</a>
+            <a href="#nap-optimizer">Power Naps</a>
+            <a href="#sound-synthesizer">Sleep Sounds</a>
+            <a href="#sleep-debt">Sleep Debt</a>
+            <a href="#science-guide">Sleep Science</a>
+        </div>
     </header>
 
     <!-- ===================== Main Content ===================== -->
@@ -3111,7 +3002,7 @@
             privacy: `
                 <h2 class="modal-title">Privacy Policy</h2>
                 <div class="modal-body">
-                    <p>Last updated: August 2026</p>
+                    <p>Last updated: January 2026</p>
                     <p>SleepCalChq respects your privacy. This policy explains what data we collect and how it is used.</p>
                     <h3>Local Storage</h3>
                     <p>We use browser local storage to save your theme preference (dark/light mode) and settings. No data is transmitted to our servers.</p>
@@ -3122,13 +3013,13 @@
                     <h3>Third-party Services</h3>
                     <p>We may use Google Fonts for typography. Google Fonts may collect IP addresses as part of their service. See Google's privacy policy for details.</p>
                     <h3>Contact</h3>
-                    <p>For privacy concerns, contact supportsleepcalchq@gmail.com.</p>
+                    <p>For privacy concerns, contact support@sleepcalchq.com.</p>
                 </div>
             `,
             terms: `
                 <h2 class="modal-title">Terms of Service</h2>
                 <div class="modal-body">
-                    <p>Last updated: August 2026</p>
+                    <p>Last updated: January 2026</p>
                     <p>By using SleepCalChq, you agree to these terms.</p>
                     <h3>Acceptable Use</h3>
                     <p>You may use this tool for personal, non-commercial purposes. You may not scrape, resell, or misrepresent the outputs of this tool.</p>
@@ -3171,7 +3062,7 @@
                 <div class="modal-body">
                     <p>We'd love to hear from you!</p>
                     <p>For general inquiries, support, or feedback, please email us at:</p>
-                    <p style="font-size:1.25rem; font-weight:bold; color: var(--violet);">supportsleepcalchq@gmail.com</p>
+                    <p style="font-size:1.25rem; font-weight:bold; color: var(--violet);">support@sleepcalchq.com</p>
                     <p>We typically respond within 2–3 business days.</p>
                     <h3>Partnerships</h3>
                     <p>For partnership or sponsorship inquiries, include "Partnership" in the subject line.</p>
