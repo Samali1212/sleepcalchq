@@ -1,3178 +1,844 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleep Cycle Calculator | Bedtime & Wake Up Time Calculator | SleepCalChq</title>
-    <meta name="description" content="Use the SleepCalChq sleep cycle calculator to estimate bedtime and wake-up times using an approximate 90-minute sleep-cycle model. Plan your sleep schedule with practical timing estimates.">
-    <meta name="keywords" content="sleep cycle calculator, 90 minute sleep cycle, REM sleep calculator, best time to wake up, what time should I go to sleep, sleep debt calculator, circadian rhythm calculator">
-    <link rel="canonical" href="https://sleepcalchq.com/sleep-cycle-calculator">
-
-    <!-- Open Graph / Social Meta -->
+    <title>Sleep Cycle Calculator | SleepCalChq</title>
+    <meta name="description" content="Calculate your ideal bedtime or wake-up time using the Sleep Cycle Calculator. Wake up refreshed by aligning with 90-minute sleep cycles. Free & easy.">
+    <meta name="keywords" content="sleep cycle calculator, sleep cycles, bedtime calculator, wake up calculator, sleep timing, sleep stages, REM sleep, deep sleep, sleep tools, SleepCalChq">
+    <link rel="canonical" href="https://sleepcalchq.com/sleep-cycle-calculator/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://sleepcalchq.com/assets/images/favicon.png">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sleep Cycle Calculator | SleepCalChq">
+    <meta property="og:description" content="Calculate your ideal bedtime or wake-up time using the Sleep Cycle Calculator. Wake up refreshed by aligning with 90-minute sleep cycles.">
+    <meta property="og:url" content="https://sleepcalchq.com/sleep-cycle-calculator/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sleep Cycle Calculator | Bedtime & Wake Up Time Calculator | SleepCalChq">
-    <meta property="og:description" content="Use the SleepCalChq sleep cycle calculator to estimate bedtime and wake-up times using an approximate 90-minute sleep-cycle model. Plan your sleep schedule with practical timing estimates.">
-    <meta property="og:url" content="https://sleepcalchq.com/sleep-cycle-calculator">
-    <meta property="og:image" content="https://sleepcalchq.com/assets/og-preview.png">
+    <meta property="og:image" content="https://sleepcalchq.com/assets/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
+    
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sleep Cycle Calculator | Bedtime & Wake Up Time Calculator | SleepCalChq">
-    <meta name="twitter:description" content="Use the SleepCalChq sleep cycle calculator to estimate bedtime and wake-up times using an approximate 90-minute sleep-cycle model. Plan your sleep schedule with practical timing estimates.">
-    <meta name="twitter:image" content="https://sleepcalchq.com/assets/og-preview.png">
-
-    <!-- Favicon (Data URI SVG) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230284c7'%3E%3Cpath d='M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z'/%3E%3C/svg%3E">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- JSON-LD Advanced Schema -->
+    <meta name="twitter:title" content="Sleep Cycle Calculator | SleepCalChq">
+    <meta name="twitter:description" content="Calculate your ideal bedtime or wake-up time using the Sleep Cycle Calculator. Wake up refreshed by aligning with 90-minute sleep cycles.">
+    <meta name="twitter:image" content="https://sleepcalchq.com/assets/images/og-image.jpg">
+    
+    <!-- JSON-LD Schema -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [{
-                "@type": "WebApplication",
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
                 "name": "SleepCalChq",
-                "url": "https://sleepcalchq.com/sleep-cycle-calculator",
+                "url": "https://sleepcalchq.com/",
+                "description": "Sleep tools and resources for better sleep health."
+            },
+            {
+                "@type": "WebApplication",
+                "name": "Sleep Cycle Calculator",
+                "url": "https://sleepcalchq.com/sleep-cycle-calculator/",
                 "applicationCategory": "HealthApplication",
-                "operatingSystem": "All",
+                "operatingSystem": "Any",
+                "description": "Calculate the optimal bedtime or wake-up time based on 90-minute sleep cycles.",
                 "offers": {
                     "@type": "Offer",
                     "price": "0",
                     "priceCurrency": "USD"
-                },
-                "featureList": [
-                    "90-minute sleep cycle estimator",
-                    "Wake time bedtime planner",
-                    "Power nap optimizer",
-                    "Sleep debt calculator",
-                    "Ambient sound synthesizer"
-                ],
-                "browserRequirements": "Requires JavaScript"
-            }, {
-                "@type": "WebSite",
-                "name": "SleepCalChq",
-                "url": "https://sleepcalchq.com/",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://sleepcalchq.com/?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
                 }
-            }, {
+            },
+            {
                 "@type": "Organization",
                 "name": "SleepCalChq",
                 "url": "https://sleepcalchq.com/",
-                "logo": "https://sleepcalchq.com/assets/logo.png",
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "email": "supportsleepcalchq@gmail.com",
-                    "contactType": "customer support"
-                }
-            }, {
+                "logo": "https://sleepcalchq.com/assets/images/logo.png"
+            },
+            {
                 "@type": "BreadcrumbList",
-                "itemListElement": [{
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://sleepcalchq.com/"
-                }, {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Sleep Cycle Calculator",
-                    "item": "https://sleepcalchq.com/sleep-cycle-calculator"
-                }]
-            }, {
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://sleepcalchq.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Sleep Cycle Calculator",
+                        "item": "https://sleepcalchq.com/sleep-cycle-calculator/"
+                    }
+                ]
+            },
+            {
                 "@type": "FAQPage",
-                "mainEntity": [{
-                    "@type": "Question",
-                    "name": "What is a sleep cycle calculator?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "A sleep cycle calculator is a planning tool that estimates bedtime or wake-up times based on an approximate 90-minute sleep-cycle model. It helps you schedule sleep by counting backward or forward from a target time, using a simplified average cycle length rather than measuring your actual sleep stages."
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is a sleep cycle?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A sleep cycle is a progression through different stages of sleep—N1, N2, N3 (deep sleep), and REM—averaging about 90 minutes. The brain and body go through these cycles multiple times each night."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How many sleep cycles do I need?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Most adults need 4-6 sleep cycles per night, which equals 6-9 hours of sleep. The exact number depends on your age, activity level, and individual sleep needs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I wake up at the end of a sleep cycle?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes! Waking up at the end of a sleep cycle is ideal because your body is already transitioning to a lighter sleep stage. This reduces sleep inertia and helps you feel more refreshed."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long is a typical sleep cycle?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The average sleep cycle lasts about 90 minutes. However, cycles can range from 70 to 120 minutes depending on the individual."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is it better to wake up between sleep cycles?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely. Waking up between cycles is much better than waking up in the middle of deep sleep. The Sleep Cycle Calculator helps you time your wake-up to align with cycle transitions."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is the Sleep Cycle Calculator accurate?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The calculator uses the average 90-minute cycle length and your sleep latency to provide a reliable estimate. Individual variations exist, but it is a scientifically based guide."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use this for shift work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the Sleep Cycle Calculator is adaptable for any sleep schedule. Simply enter your planned bedtime or wake-up time, and it will help you align with your cycles."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What if I have irregular sleep patterns?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Even with irregular patterns, aligning your wake-up time with cycle ends can reduce grogginess. Use the calculator to set a consistent wake time, and try to maintain it daily."
+                        }
                     }
-                }, {
-                    "@type": "Question",
-                    "name": "How does a sleep cycle calculator work?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "A sleep cycle calculator uses a simplified 90-minute model. If you provide a wake-up time, it subtracts an estimated sleep latency (time to fall asleep) and the desired number of 90-minute cycles to suggest a bedtime. If you provide a bedtime, it adds sleep latency and cycle durations to estimate wake-up times."
-                    }
-                }, {
-                    "@type": "Question",
-                    "name": "Is a sleep cycle really 90 minutes?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "The 90-minute value is a widely cited average, but actual sleep cycles typically range from 70 to 120 minutes. Cycle length can vary between individuals and across different stages of the night. This calculator uses 90 minutes as a planning approximation, not an exact biological constant."
-                    }
-                }, {
-                    "@type": "Question",
-                    "name": "What time should I go to bed if I wake up at 7 AM?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "If you want to wake up at 7:00 AM, plan for 5 cycles (approximately 7.5 hours of sleep) plus about 15 minutes to fall asleep. That suggests a bedtime around 11:15 PM the previous night. Adjust the cycle count and sleep latency to match your individual needs and schedule."
-                    }
-                }, {
-                    "@type": "Question",
-                    "name": "How many sleep cycles should I get?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "The number of sleep cycles varies by individual, age, and lifestyle. Many adults plan for 5 cycles (about 7.5 hours) as a common target, while some function well on 4 cycles and athletes or teenagers may need 6. The total hours of sleep matters more than the specific cycle count, so prioritize consistent sleep duration."
-                    }
-                }, {
-                    "@type": "Question",
-                    "name": "Why do I still feel tired after waking up?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Feeling tired after waking can be related to sleep inertia — a temporary grogginess that can occur when you wake during deep sleep stages. It can also stem from fragmented sleep, insufficient total sleep, or underlying sleep issues. If tiredness persists despite adequate sleep, consult a healthcare professional."
-                    }
-                }, {
-                    "@type": "Question",
-                    "name": "Does this calculator measure my actual sleep cycles?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "No. This calculator uses an approximate 90-minute model to estimate planning times. It does not measure your real-time brain activity, sleep stages, or individual cycle lengths. For personal sleep data, consider a sleep tracker or consult a sleep specialist."
-                    }
-                }]
-            }, {
+                ]
+            },
+            {
                 "@type": "Article",
-                "headline": "Understanding Sleep Cycles: How Approximate 90-Minute Rhythms Can Help Plan Your Sleep",
-                "datePublished": "2026-08-30",
-                "dateModified": "2026-08-30",
+                "headline": "Sleep Cycle Calculator: How to Use It and Why It Works",
                 "author": {
                     "@type": "Organization",
-                    "name": "SleepCalChq Editorial Team",
-                    "url": "https://sleepcalchq.com/"
-                },
-                "reviewedBy": {
-                    "@type": "Person",
-                    "name": "Dr. Sarah Chen, MD",
-                    "credentials": "MD, Sleep Medicine, American Academy of Sleep Medicine (AASM)",
-                    "url": "https://sleepcalchq.com/medical-reviewer"
+                    "name": "SleepCalChq"
                 },
                 "publisher": {
                     "@type": "Organization",
                     "name": "SleepCalChq",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://sleepcalchq.com/assets/logo.png"
+                        "url": "https://sleepcalchq.com/assets/images/logo.png"
                     }
-                }
-            }]
-        }
+                },
+                "image": "https://sleepcalchq.com/assets/images/og-image.jpg",
+                "datePublished": "2026-08-30",
+                "dateModified": "2026-08-30",
+                "mainEntityOfPage": "https://sleepcalchq.com/sleep-cycle-calculator/"
+            }
+        ]
+    }
     </script>
 
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Embedded styles: keep original -->
     <style>
-        /* ===================== CSS Reset & Variables ===================== */
         *,
         *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --font-display: 'Space Grotesk', sans-serif;
-            --bg-light: #f8fafc;
-            --bg-dark: #060a17;
-            --card-light: #ffffff;
-            --card-dark: #0f172a;
-            --text-light: #1e293b;
-            --text-dark: #e2e8f0;
-            --border-light: #e2e8f0;
-            --border-dark: #1e293b;
-            --indigo-50: #f0f7ff;
-            --indigo-400: #38bdf8;
-            --indigo-500: #0284c7;
-            --indigo-600: #0369a1;
-            --violet: #6366f1;
-            --violet-600: #4f46e5;
-            --teal: #14b8a6;
-            --amber: #f59e0b;
-            --red: #ef4444;
-            --green: #10b981;
-            --sky: #0ea5e9;
+            --bg: #f4f6fb; --bg-card: #fff; --bg-dark: #12121e; --text: #1e1e2e;
+            --text-secondary: #6c7a89; --accent: #6c5ce7; --accent-hover: #5a4bd1;
+            --accent-light: rgba(108,92,231,.12); --border: #e8ecf1; --shadow: 0 8px 32px rgba(0,0,0,.08);
+            --radius: 16px; --radius-sm: 10px; --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif; --transition: all .3s ease;
         }
-
-        html.dark {
-            --bg: #060a17;
-            --card: #0f172a;
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
+        body.dark {
+            --bg: #12121e; --bg-card: #1e1e30; --text: #e8e8f0; --text-secondary: #9494b0;
+            --border: #2a2a3c; --shadow: 0 8px 32px rgba(0,0,0,.3); --accent-light: rgba(162,155,254,.15);
         }
+        body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; transition: var(--transition); }
 
-        html:not(.dark) {
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* ===================== Utility Classes ===================== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .container-sm {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .flex-col {
-            flex-direction: column;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-
-        .flex-1 {
-            flex: 1;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .items-end {
-            align-items: flex-end;
-        }
-
-        .gap-1 {
-            gap: 0.25rem;
-        }
-
-        .gap-2 {
-            gap: 0.5rem;
-        }
-
-        .gap-3 {
-            gap: 0.75rem;
-        }
-
-        .gap-4 {
-            gap: 1rem;
-        }
-
-        .gap-6 {
-            gap: 1.5rem;
-        }
-
-        .gap-8 {
-            gap: 2rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .block {
-            display: block;
-        }
-
-        .w-full {
-            width: 100%;
-        }
-
-        .w-fit {
-            width: fit-content;
-        }
-
-        .relative {
-            position: relative;
-        }
-
-        .absolute {
-            position: absolute;
-        }
-
-        .sticky {
-            position: sticky;
-        }
-
-        .top-0 {
-            top: 0;
-        }
-
-        .z-50 {
-            z-index: 50;
-        }
-
-        .border {
-            border: 1px solid var(--border);
-        }
-
-        .border-b {
+        .site-header {
+            position: sticky; top: 0; z-index: 999; background: var(--bg-card);
+            box-shadow: 0 2px 20px rgba(0,0,0,.06); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
         }
-
-        .rounded {
-            border-radius: 0.5rem;
-        }
-
-        .rounded-lg {
-            border-radius: 0.75rem;
-        }
-
-        .rounded-xl {
-            border-radius: 1rem;
-        }
-
-        .rounded-2xl {
-            border-radius: 1.5rem;
-        }
-
-        .rounded-3xl {
-            border-radius: 2rem;
-        }
-
-        .shadow {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .shadow-lg {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .text-xs {
-            font-size: 0.75rem;
-        }
-
-        .text-sm {
-            font-size: 0.875rem;
-        }
-
-        .text-base {
-            font-size: 1rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-3xl {
-            font-size: 1.875rem;
-        }
-
-        .text-4xl {
-            font-size: 2.25rem;
-        }
-
-        .text-5xl {
-            font-size: 3rem;
-        }
-
-        .font-bold {
-            font-weight: 700;
-        }
-
-        .font-extrabold {
-            font-weight: 800;
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .font-display {
-            font-family: var(--font-display);
-        }
-
-        .uppercase {
-            text-transform: uppercase;
-        }
-
-        .tracking-wide {
-            letter-spacing: 0.025em;
-        }
-
-        .tracking-wider {
-            letter-spacing: 0.05em;
-        }
-
-        .tracking-widest {
-            letter-spacing: 0.1em;
-        }
-
-        .leading-relaxed {
-            line-height: 1.7;
-        }
-
-        .leading-tight {
-            line-height: 1.25;
-        }
-
-        .my-1 {
-            margin-top: 0.25rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .my-2 {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .my-4 {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .my-6 {
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .my-8 {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .mt-1 {
-            margin-top: 0.25rem;
-        }
-
-        .mt-2 {
-            margin-top: 0.5rem;
-        }
-
-        .mt-3 {
-            margin-top: 0.75rem;
-        }
-
-        .mt-4 {
-            margin-top: 1rem;
-        }
-
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-
-        .mt-8 {
-            margin-top: 2rem;
-        }
-
-        .mb-1 {
-            margin-bottom: 0.25rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 0.75rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-
-        .pt-4 {
-            padding-top: 1rem;
-        }
-
-        .pt-8 {
-            padding-top: 2rem;
-        }
-
-        .pt-12 {
-            padding-top: 3rem;
-        }
-
-        .pb-4 {
-            padding-bottom: 1rem;
-        }
-
-        .pb-8 {
-            padding-bottom: 2rem;
-        }
-
-        .pb-12 {
-            padding-bottom: 3rem;
-        }
-
-        .py-2 {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .py-3 {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .py-6 {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .px-2 {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-
-        .px-3 {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-        }
-
-        .px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        /* ===================== Header ===================== */
-        .app-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            background-color: rgba(7, 11, 25, 0.85);
-            border-bottom: 1px solid var(--border);
-            transition: background-color 0.3s;
-        }
-
-        html:not(.dark) .app-header {
-            background-color: rgba(255, 255, 255, 0.85);
-        }
-
-        .header-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0.875rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--violet-600), var(--sky), var(--teal));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-        }
-
-        .logo-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text);
-        }
-
-        .logo-text span {
-            color: var(--sky);
-        }
-
-        .logo-badge {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--violet);
-            padding: 0.125rem 0.5rem;
-            border-radius: 0.375rem;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .nav-desktop {
-            display: none;
-            align-items: center;
-            background: rgba(51, 65, 85, 0.4);
-            border-radius: 9999px;
-            padding: 0.375rem;
-            gap: 0.25rem;
-            border: 1px solid rgba(51, 65, 85, 0.3);
-        }
-
-        html:not(.dark) .nav-desktop {
-            background: rgba(241, 245, 249, 0.8);
-            border-color: rgba(226, 232, 240, 0.8);
-        }
-
-        .nav-desktop a {
-            padding: 0.375rem 0.875rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-muted);
-            transition: all 0.2s;
-        }
-
-        .nav-desktop a:hover {
-            color: var(--violet);
-        }
-
-        .nav-desktop a.active {
-            background: var(--violet-600);
-            color: white;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: rgba(51, 65, 85, 0.4);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text);
-        }
-
-        html:not(.dark) .header-btn {
-            background: rgba(241, 245, 249, 0.8);
-        }
-
-        .header-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .header-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .mobile-menu {
-            display: none;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem;
-        }
-
-        .mobile-menu.open {
-            display: block;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 0.625rem 0.875rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(99, 102, 241, 0.1);
-        }
-
-        /* ===================== Hero Section ===================== */
-        .hero {
-            padding-top: 3rem;
-            padding-bottom: 5rem;
-            position: relative;
-            overflow: hidden;
-            background: var(--bg);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 700px;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(56, 189, 248, 0.1), transparent);
-            border-radius: 50%;
-            filter: blur(40px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 768px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: var(--violet);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.375rem 0.875rem;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-badge svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        @media (min-width: 640px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 768px;
-            margin: 0 auto;
-        }
-
-        /* ===================== Main Calculator Card ===================== */
-        .calculator-card {
-            background: var(--card);
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            max-width: 1024px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 640px) {
-            .calculator-card {
-                padding: 1.25rem;
-                border-radius: 16px;
-            }
-        }
-
-        .tabs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-            background: rgba(51, 65, 85, 0.3);
-            padding: 0.375rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        @media (min-width: 640px) {
-            .tabs {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .tab-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tab-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .tab-btn.active {
-            background: var(--violet-600);
-            color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
-
-        .input-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            align-items: end;
-        }
-
-        @media (min-width: 768px) {
-            .input-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .input-group input[type="time"] {
-            width: 100%;
-            background: rgba(51, 65, 85, 0.4);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 0.875rem 1rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text);
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        html:not(.dark) .input-group input[type="time"] {
-            background: rgba(241, 245, 249, 0.8);
-        }
-
-        .input-group input[type="time"]:focus {
-            border-color: var(--violet-600);
-        }
-
-        .latency-label-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .latency-value {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--violet);
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.125rem 0.5rem;
-            border-radius: 6px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .latency-range {
-            width: 100%;
-            accent-color: var(--violet-600);
-            cursor: pointer;
-        }
-
-        .latency-legend {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .calc-btn {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--violet-600), var(--sky));
-            border: none;
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .calc-btn:hover {
-            transform: scale(0.98);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .calc-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* ===================== Results Area ===================== */
-        .results-area {
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            margin-top: 0;
-        }
-
-        .results-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .results-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-
-        .results-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.25rem;
-        }
-
-        .results-title svg {
-            width: 20px;
-            height: 20px;
-            color: var(--amber);
-        }
-
-        .results-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .results-info {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(99, 102, 241, 0.05);
-            padding: 0.375rem 0.75rem;
-            border-radius: 0.5rem;
-        }
-
-        .results-info svg {
-            width: 14px;
-            height: 14px;
-            color: var(--violet);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .cards-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .result-card {
-            background: rgba(51, 65, 85, 0.3);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, border-color 0.2s;
-            position: relative;
-        }
-
-        html:not(.dark) .result-card {
-            background: rgba(241, 245, 249, 0.8);
-        }
-
-        .result-card:hover {
-            transform: scale(1.02);
-            border-color: rgba(99, 102, 241, 0.5);
-        }
-
-        .result-card.highlight {
-            border-color: var(--violet-600);
-            background: rgba(99, 102, 241, 0.08);
-        }
-
-        .result-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .result-cycles {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--violet);
-        }
-
-        .suggested-badge {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            background: var(--violet-600);
-            color: white;
-            padding: 0.125rem 0.5rem;
-            border-radius: 9999px;
-        }
-
-        .result-action {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .result-time {
-            font-family: var(--font-display);
-            font-size: 1.875rem;
-            font-weight: 800;
-            color: var(--text);
-            margin: 0.25rem 0;
-        }
-
-        .result-time-ampm {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .result-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .result-tag {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .result-tag svg {
-            width: 14px;
-            height: 14px;
-            color: var(--green);
-        }
-
-        .result-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .result-action-btn {
-            padding: 0.5rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .result-action-btn svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .result-action-btn.copy {
-            background: rgba(51, 65, 85, 0.3);
-            color: var(--text);
-        }
-
-        html:not(.dark) .result-action-btn.copy {
-            background: rgba(226, 232, 240, 0.8);
-        }
-
-        .result-action-btn.copy:hover {
-            background: rgba(51, 65, 85, 0.5);
-        }
-
-        .result-action-btn.cal {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--violet);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .result-action-btn.cal:hover {
-            background: rgba(99, 102, 241, 0.2);
-        }
-
-        /* ===================== Quick Tools Section ===================== */
-        .quick-tools {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            max-width: 1024px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (min-width: 768px) {
-            .quick-tools {
-                grid-template-columns: 1fr 2fr;
-            }
-        }
-
-        .tool-card {
-            background: var(--card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        .tool-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .tool-icon {
-            padding: 0.625rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tool-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .tool-title {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .tool-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .tool-btn {
-            width: 100%;
-            padding: 0.625rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(51, 65, 85, 0.3);
-            color: var(--text);
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
-
-        html:not(.dark) .tool-btn {
-            background: rgba(241, 245, 249, 0.8);
-        }
-
-        .tool-btn:hover {
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        .tool-btn svg {
-            width: 16px;
-            height: 16px;
-            color: var(--amber);
-        }
-
-        .sound-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.625rem;
-            margin-top: 1rem;
-        }
-
-        .sound-btn {
-            padding: 0.625rem 0.75rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(51, 65, 85, 0.3);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
-
-        html:not(.dark) .sound-btn {
-            background: rgba(241, 245, 249, 0.8);
-        }
-
-        .sound-btn:hover {
-            border-color: var(--violet-600);
-        }
-
-        .sound-btn.active {
-            border-color: var(--violet-600);
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
-            background: rgba(99, 102, 241, 0.1);
-        }
-
-        .sound-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .sound-status {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            background: rgba(51, 65, 85, 0.3);
-        }
-
-        html:not(.dark) .sound-status {
-            background: rgba(226, 232, 240, 0.8);
-        }
-
-        .sound-note {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.75rem;
-            line-height: 1.5;
-        }
-
-        /* ===================== Sleep Debt Widget ===================== */
-        .sleep-debt-section {
-            margin-top: 2rem;
-            max-width: 1024px;
-            margin-left: auto;
-            margin-right: auto;
-            background: linear-gradient(135deg, rgba(30, 27, 75, 0.4), rgba(15, 23, 42, 0.9), rgba(30, 27, 75, 0.4));
-            border-radius: 24px;
-            padding: 2rem;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-
-        .debt-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: var(--violet);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            margin-bottom: 0.75rem;
-        }
-
-        .debt-badge svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .debt-section-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .debt-section-desc {
-            font-size: 0.875rem;
-            color: rgba(226, 232, 240, 0.8);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .debt-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .debt-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .debt-field label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: rgba(226, 232, 240, 0.8);
-            margin-bottom: 0.375rem;
-        }
-
-        .debt-field select {
-            width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(51, 65, 85, 0.8);
-            border-radius: 12px;
-            padding: 0.625rem 0.875rem;
-            font-size: 0.875rem;
-            color: white;
-            outline: none;
-        }
-
-        .debt-submit {
-            width: 100%;
-            padding: 0.625rem 1rem;
-            border-radius: 12px;
-            background: var(--violet-600);
-            color: white;
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: background 0.2s;
-        }
-
-        .debt-submit:hover {
-            background: var(--violet);
-        }
-
-        .debt-submit svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .debt-result {
-            display: none;
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 16px;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            font-size: 0.75rem;
-            color: rgba(226, 232, 240, 0.9);
-            line-height: 1.6;
-        }
-
-        .debt-result.visible {
-            display: block;
-        }
-
-        .debt-result-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .debt-result-title svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .debt-result-box {
-            margin-top: 0.75rem;
-            padding: 0.75rem;
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 12px;
-            font-size: 0.75rem;
-            color: rgba(203, 213, 225, 0.8);
-            line-height: 1.6;
-        }
-
-        .debt-result-box strong {
-            color: var(--violet);
-        }
-
-        /* ===================== Article Section ===================== */
-        .article-section {
-            padding: 4rem 0;
-            border-top: 1px solid var(--border);
-            background: rgba(51, 65, 85, 0.05);
-        }
-
-        html:not(.dark) .article-section {
-            background: rgba(241, 245, 249, 0.5);
-        }
-
-        .article-container {
-            max-width: 896px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        .article-header {
-            margin-bottom: 2rem;
-        }
-
-        .article-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--violet);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .article-title {
-            font-family: var(--font-display);
-            font-size: 1.875rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .article-intro {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .article-section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text);
-        }
-
-        .article-section-title svg {
-            width: 24px;
-            height: 24px;
-            color: var(--sky);
-        }
-
-        .article-text {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .article-text strong {
-            color: var(--text);
-        }
-
-        .cycle-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .cycle-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .cycle-card {
-            padding: 1.25rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: rgba(51, 65, 85, 0.3);
-        }
-
-        html:not(.dark) .cycle-card {
-            background: rgba(241, 245, 249, 0.6);
-        }
-
-        .cycle-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .cycle-card-header svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .cycle-card-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .formula-box {
-            background: rgba(99, 102, 241, 0.08);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 0.875rem;
-            color: rgba(226, 232, 240, 0.9);
-            line-height: 1.6;
-        }
-
-        html:not(.dark) .formula-box {
-            background: rgba(99, 102, 241, 0.05);
-            color: var(--text);
-        }
-
-        .formula-box strong {
-            color: var(--sky);
-        }
-
-        .formula-note {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.875rem;
-            text-align: left;
-        }
-
-        .comparison-table th {
-            background: rgba(51, 65, 85, 0.4);
-            padding: 0.875rem;
-            font-weight: 700;
-            border-bottom: 1px solid var(--border);
-        }
-
-        html:not(.dark) .comparison-table th {
-            background: rgba(241, 245, 249, 0.6);
-        }
-
-        .comparison-table td {
-            padding: 0.875rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table td:first-child {
-            font-weight: 600;
-        }
-
-        .comparison-table .highlight {
-            color: var(--violet);
-            font-weight: 700;
-        }
-
-        .tip-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tip-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            border-radius: 12px;
-            background: rgba(51, 65, 85, 0.2);
-            border: 1px solid var(--border);
-            margin-bottom: 0.75rem;
-        }
-
-        html:not(.dark) .tip-list li {
-            background: rgba(241, 245, 249, 0.6);
-        }
-
-        .tip-list li svg {
-            width: 20px;
-            height: 20px;
-            color: var(--teal);
-            flex-shrink: 0;
-            margin-top: 0.125rem;
-        }
-
-        .tip-list strong {
-            color: var(--text);
-        }
-
-        /* FAQ Accordion */
-        .faq-list {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .faq-item {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .faq-item summary {
-            padding: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 700;
-            color: var(--text);
-            font-size: 1rem;
-            list-style: none;
-        }
-
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-item summary:focus-visible {
-            outline: 2px solid var(--violet-600);
-            outline-offset: 2px;
-        }
-
-        .faq-item summary .chevron {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.2s;
-            color: var(--text-muted);
-            flex-shrink: 0;
-        }
-
-        .faq-item[open] summary .chevron {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 1.25rem 1.25rem;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        /* ===================== Modals ===================== */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-        }
-
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-content {
-            background: var(--card);
-            border-radius: 24px;
-            max-width: 640px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--border);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1rem;
-            color: var(--text);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .modal-body {
-            font-size: 0.875rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-        }
-
-        .modal-body h3 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-body p {
-            margin-bottom: 0.75rem;
-        }
-
-        /* ===================== Footer ===================== */
-        .app-footer {
-            background: rgba(15, 23, 42, 0.9);
-            color: rgba(148, 163, 184, 0.8);
-            font-size: 0.75rem;
-            border-top: 1px solid var(--border);
-            padding: 3rem 0 1rem;
-            margin-top: auto;
-        }
-
-        html:not(.dark) .app-footer {
-            background: rgba(30, 41, 59, 0.9);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr 1fr;
-            }
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-brand .logo-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-        }
-
-        .footer-brand-text {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-        }
-
-        .footer-brand-text span {
-            color: var(--sky);
-        }
-
-        .footer-desc {
-            font-size: 0.75rem;
-            line-height: 1.6;
-            color: rgba(148, 163, 184, 0.8);
-            max-width: 280px;
-        }
-
-        .footer-column h5 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: white;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-column a {
-            color: rgba(148, 163, 184, 0.8);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.75rem;
-        }
-
-        .footer-column a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(51, 65, 85, 0.5);
-            padding-top: 1rem;
-            font-size: 0.75rem;
-            color: rgba(100, 116, 139, 0.7);
-            line-height: 1.6;
-        }
-
-        /* ===================== Back to Home CTA ===================== */
-        .back-home-cta {
-            text-align: center;
-            margin: 3rem auto 2rem;
-            max-width: 1024px;
-            padding: 0 1rem;
-        }
-
-        .back-home-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1.75rem;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--violet-600), var(--sky));
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-decoration: none;
-            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .back-home-btn:hover {
-            transform: scale(0.98);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .back-home-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* ===================== Responsive ===================== */
-        @media (min-width: 768px) {
-            .nav-desktop {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        /* Accessibility focus */
-        .focus-visible:focus-visible {
-            outline: 2px solid var(--violet-600);
-            outline-offset: 2px;
-        }
-
-        /* ===== Author / Medical Review Box ===== */
-        .author-box {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .author-box p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .author-box strong {
-            color: var(--text);
+        .header-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 70px; }
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--accent); font-size: 1.8rem; }
+        .nav-desktop { display: flex; align-items: center; gap: 8px; }
+        .nav-desktop a { text-decoration: none; color: var(--text-secondary); font-weight: 500; padding: 8px 16px; border-radius: 50px; font-size: .9rem; transition: var(--transition); }
+        .nav-desktop a:hover, .nav-desktop a.active { background: var(--accent-light); color: var(--accent); }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { background: none; border: 2px solid var(--border); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: var(--transition); }
+        .theme-toggle:hover { border-color: var(--accent); }
+        .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
+        .nav-mobile {
+            display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--bg-card);
+            padding: 20px; box-shadow: 0 8px 30px rgba(0,0,0,.1); z-index: 998;
+        }
+        .nav-mobile.open { display: flex; flex-direction: column; gap: 10px; }
+        .nav-mobile a { text-decoration: none; color: var(--text); padding: 12px; border-radius: var(--radius-sm); background: var(--bg); }
+        .nav-mobile a.active { background: var(--accent-light); color: var(--accent); }
+
+        .hero { text-align: center; padding: 60px 24px 40px; background: linear-gradient(135deg, var(--accent-light), transparent); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(108,92,231,.2), transparent 70%); border-radius: 50%; }
+        .hero h1 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; position: relative; z-index: 1; }
+        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem; position: relative; z-index: 1; }
+
+        .calculator-wrapper { max-width: 900px; margin: 0 auto; padding: 20px 24px 60px; }
+        .calculator-card { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px; border: 1px solid var(--border); }
+        .tabs { display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg); border-radius: 50px; padding: 6px; }
+        .tabs .tab { flex: 1; padding: 12px; border: none; background: transparent; border-radius: 50px; font-family: var(--font-body); font-weight: 600; font-size: .9rem; cursor: pointer; transition: var(--transition); color: var(--text-secondary); }
+        .tabs .tab.active { background: var(--accent); color: #fff; box-shadow: 0 4px 15px rgba(108,92,231,.3); }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .input-group label { font-weight: 600; font-size: .9rem; color: var(--text); }
+        .input-group input[type="time"] { padding: 12px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 1rem; background: var(--bg); color: var(--text); outline: none; transition: var(--transition); }
+        .input-group input[type="time"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+        .latency-label-row { display: flex; justify-content: space-between; font-size: .85rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .latency-range { width: 100%; accent-color: var(--accent); height: 6px; border-radius: 10px; background: var(--border); }
+        .calc-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 50px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 15px rgba(108,92,231,.3); }
+        .calc-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(108,92,231,.4); }
+
+        .results-area { margin-top: 32px; display: none; }
+        .results-area.show { display: block; }
+        .results-header { text-align: center; margin-bottom: 20px; font-weight: 600; color: var(--text-secondary); }
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .result-card { background: var(--bg); border-radius: var(--radius); padding: 20px; text-align: center; border: 2px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+        .result-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), #a29bfe); }
+        .result-card:hover { border-color: var(--accent); box-shadow: 0 8px 25px rgba(108,92,231,.1); transform: translateY(-4px); }
+        .result-cycles { font-size: .85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
+        .result-time { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text); margin: 8px 0; }
+        .result-tag { font-size: .85rem; color: var(--text-secondary); margin-bottom: 12px; background: var(--accent-light); display: inline-block; padding: 4px 12px; border-radius: 20px; }
+        .result-actions { display: flex; gap: 8px; justify-content: center; }
+        .result-actions button { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg-card); font-size: .8rem; cursor: pointer; transition: var(--transition); color: var(--text); }
+        .result-actions button:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .quick-tools { max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }
+        .tool-card { background: var(--bg-card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .tool-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; }
+        .sound-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+        .sound-btn { display: block; text-align: center; padding: 12px; background: var(--bg); border-radius: 10px; text-decoration: none; color: var(--text); font-weight: 500; font-size: .9rem; transition: var(--transition); border: 1px solid var(--border); }
+        .sound-btn:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+        .sound-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .article-section { max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }
+        .article-content { background: var(--bg-card); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); border: 1px solid var(--border); line-height: 1.8; }
+        .article-content h2 { font-family: var(--font-heading); font-size: 1.6rem; margin: 32px 0 16px; color: var(--text); }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content h3 { font-family: var(--font-heading); font-size: 1.2rem; margin: 20px 0 10px; color: var(--text); }
+        .article-content p { color: var(--text-secondary); margin-bottom: 16px; }
+        .article-content ul { margin-bottom: 16px; padding-left: 20px; }
+        .article-content ul li { color: var(--text-secondary); margin-bottom: 8px; }
+        .tip-list { background: var(--accent-light); border-radius: var(--radius-sm); padding: 20px; margin: 24px 0; border-left: 4px solid var(--accent); }
+        .tip-list li { margin-bottom: 10px; color: var(--text); }
+
+        .faq-section { max-width: 900px; margin: 0 auto 40px; padding: 0 24px; }
+        .faq-list { background: var(--bg-card); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; color: var(--text); padding: 8px 0; }
+        .faq-question::after { content: '+'; font-size: 1.4rem; color: var(--accent); transition: var(--transition); }
+        .faq-item.open .faq-question::after { content: '−'; }
+        .faq-answer { display: none; padding: 10px 0; color: var(--text-secondary); line-height: 1.6; }
+        .faq-item.open .faq-answer { display: block; }
+
+        .back-home-cta { text-align: center; padding: 20px 24px 60px; }
+        .back-home-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--bg-card); border: 2px solid var(--border); border-radius: 50px; text-decoration: none; color: var(--text); font-weight: 600; transition: var(--transition); box-shadow: var(--shadow); }
+        .back-home-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        .back-home-btn svg { width: 18px; height: 18px; }
+
+        .site-footer { background: var(--bg-dark); color: #fff; padding: 60px 24px 30px; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 12px; color: #fff; }
+        .footer-brand span { color: #a29bfe; }
+        .footer-desc { color: rgba(255,255,255,.7); font-size: .9rem; line-height: 1.6; }
+        .footer-col h4 { font-family: var(--font-heading); font-size: .95rem; margin-bottom: 16px; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col a { display: block; color: rgba(255,255,255,.7); text-decoration: none; font-size: .9rem; margin-bottom: 8px; transition: var(--transition); }
+        .footer-col a:hover { color: #a29bfe; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; margin-top: 40px; color: rgba(255,255,255,.5); font-size: .85rem; }
+
+        @media(max-width:768px) {
+            .nav-desktop { display: none; }
+            .mobile-toggle { display: block; }
+            .input-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .footer-inner { grid-template-columns: 1fr; }
+            .article-content { padding: 20px; }
+            .calculator-card { padding: 20px; }
+        }
+        @media(min-width:769px) {
+            .mobile-toggle { display: none; }
+            .nav-mobile { display: none !important; }
         }
     </style>
 </head>
-<body class="dark">
+<body>
 
-    <!-- ===================== Header ===================== -->
-    <header class="app-header">
+    <!-- Header (nav will be populated dynamically) -->
+    <header class="site-header">
         <div class="header-inner">
-            <a href="https://sleepcalchq.com" class="logo">
-                <div class="logo-icon">
-                    <!-- moon-star icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg>
-                </div>
-                <div class="logo-text">SleepCal<span>Chq</span></div>
-                <span class="logo-badge">Pro</span>
-            </a>
-
-            <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
-                <a href="https://sleepcalchq.com" class="active">Sleep Calculator</a>
-                <a href="https://sleepcalchq.com/#nap-optimizer">Power Naps</a>
-                <a href="https://sleepcalchq.com/#sound-synthesizer">Sleep Sounds</a>
-                <a href="https://sleepcalchq.com/#sleep-debt">Sleep Debt</a>
-                <a href="https://sleepcalchq.com/#science-guide">Sleep Science</a>
-            </nav>
-
+            <a href="/" class="logo"><span>🌙</span>SleepCalChq</a>
+            <nav class="nav-desktop" id="desktopNav"></nav>
             <div class="header-actions">
-                <button id="theme-toggle" class="header-btn" aria-label="Toggle dark/light theme" aria-expanded="false" aria-controls="theme-icon">
-                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-                </button>
-                <button id="mobile-menu-btn" class="header-btn mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-                </button>
-                <a href="#calculator-hub" class="calc-btn" style="width:auto; padding:0.5rem 1rem; font-size:0.75rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg>
-                    Calculate
-                </a>
+                <button class="theme-toggle" aria-label="Toggle Dark/Light Theme" onclick="toggleTheme()">🌙</button>
+                <button class="mobile-toggle" aria-label="Open Mobile Menu" onclick="toggleMobileMenu()">☰</button>
             </div>
         </div>
-
-        <!-- Mobile Navigation Dropdown -->
-        <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-            <a href="https://sleepcalchq.com">Sleep Calculator</a>
-            <a href="https://sleepcalchq.com/#nap-optimizer">Power Naps</a>
-            <a href="https://sleepcalchq.com/#sound-synthesizer">Sleep Sounds</a>
-            <a href="https://sleepcalchq.com/#sleep-debt">Sleep Debt</a>
-            <a href="https://sleepcalchq.com/#science-guide">Sleep Science</a>
-        </div>
+        <div class="nav-mobile" id="navMobile"></div>
     </header>
 
-    <!-- ===================== Main Content ===================== -->
-    <main class="flex-1">
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Sleep Cycle Calculator</h1>
+        <p>Find the perfect bedtime or wake-up time based on your sleep cycles. Wake up feeling refreshed and energized every morning.</p>
+    </section>
 
-        <!-- Hero + Calculator Section -->
-        <section class="hero" id="calculator-hub">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3L2 6"/><path d="M19 3l3 3"/><path d="M9 13h2"/></svg>
-                        Approximate 90-Minute Cycle Planner
-                    </div>
-                    <h1>Sleep Cycle Calculator</h1>
-                    <p>This tool uses an <strong>approximate 90-minute sleep-cycle model</strong> to estimate good sleep and wake windows. Individual cycles vary—use these times as a planning guide, not a guarantee.</p>
-                </div>
-
-                <!-- Main Calculator Card -->
-                <div class="calculator-card">
-                    <!-- Mode Tabs -->
-                    <div class="tabs" role="tablist" aria-label="Sleep calculator modes">
-                        <button onclick="switchMode('wakeAt')" id="tab-wakeAt" class="tab-btn active" role="tab" aria-selected="true" aria-controls="input-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 9V2"/><path d="M4.93 10.93l1.41 1.41"/><path d="M20 12h-2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
-                            I Must Wake At
-                        </button>
-                        <button onclick="switchMode('sleepAt')" id="tab-sleepAt" class="tab-btn" role="tab" aria-selected="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 9V2"/><path d="M4.93 10.93l1.41 1.41"/><path d="M20 12h-2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
-                            I Go to Bed At
-                        </button>
-                        <button onclick="switchMode('sleepNow')" id="tab-sleepNow" class="tab-btn" role="tab" aria-selected="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-                            Sleeping Now
-                        </button>
-                        <button onclick="switchMode('napMode')" id="tab-napMode" class="tab-btn" role="tab" aria-selected="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                            Power Nap
-                        </button>
-                    </div>
-
-                    <!-- Input Section -->
-                    <div id="input-container" class="input-grid">
-                        <div id="time-input-wrapper" class="input-group">
-                            <label for="target-time" id="time-label">Target Wake Up Time</label>
-                            <input type="time" id="target-time" value="06:30" aria-label="Target time">
-                        </div>
-
-                        <div class="input-group">
-                            <div class="latency-label-row">
-                                <label for="latency-slider">Fall Asleep Time (Latency)</label>
-                                <span id="latency-val" class="latency-value">15 min</span>
-                            </div>
-                            <input type="range" id="latency-slider" min="5" max="60" value="15" step="5" class="latency-range" oninput="updateLatency(this.value)" aria-label="Sleep latency minutes">
-                            <div class="latency-legend">
-                                <span>Fast (5m)</span>
-                                <span>Avg (15m)</span>
-                                <span>Slow (60m)</span>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <button onclick="calculateCycles()" class="calc-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
-                                Calculate Times
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Results Area -->
-                    <div id="results-area" class="results-area">
-                        <div class="results-header">
-                            <div>
-                                <h3 id="results-title" class="results-title">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg>
-                                    Estimated Times to Sleep
-                                </h3>
-                                <p id="results-subtitle" class="results-subtitle">
-                                    These are estimates based on an approximate 90-minute cycle model. Actual cycles vary.
-                                </p>
-                            </div>
-                            <span class="results-info">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                                Includes an estimated delay to fall asleep
-                            </span>
-                        </div>
-
-                        <div id="cards-grid" class="cards-grid"></div>
-                    </div>
-                </div>
-
-                <!-- Quick Tools Grid -->
-                <div class="quick-tools">
-
-                    <!-- Power Nap Card -->
-                    <div id="nap-optimizer" class="tool-card">
-                        <div class="tool-card-header">
-                            <div class="tool-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--amber);">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="tool-title">Power Nap Engine</h4>
-                                <p class="tool-subtitle">20 min alertness boost</p>
-                            </div>
-                        </div>
-                        <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">
-                            A 20-minute nap may enhance alertness without entering deep sleep, helping to reduce afternoon fatigue.
-                        </p>
-                        <button onclick="startQuickNap(20)" class="tool-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/></svg>
-                            Set 20-Min Nap Alarm
-                        </button>
-                    </div>
-
-                    <!-- Ambient Sound Synthesizer -->
-                    <div id="sound-synthesizer" class="tool-card" style="grid-column: span 1;">
-                        <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:0.75rem;">
-                            <div class="tool-card-header">
-                                <div class="tool-icon" style="background: rgba(20, 184, 166, 0.1); color: var(--teal);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
-                                </div>
-                                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                                    <div>
-                                        <h4 class="tool-title">Sleep Ambience & Binaural Player</h4>
-                                        <p class="tool-subtitle">Synthesized offline via Web Audio API</p>
-                                    </div>
-                                    <span id="sound-status" class="sound-status">Audio Idle</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sound-grid">
-                            <button onclick="toggleAudio('rain')" id="btn-sound-rain" class="sound-btn" aria-label="Play rain sounds">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/></svg>
-                                Rain
-                            </button>
-                            <button onclick="toggleAudio('white')" id="btn-sound-white" class="sound-btn" aria-label="Play white noise">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
-                                White Noise
-                            </button>
-                            <button onclick="toggleAudio('binaural')" id="btn-sound-binaural" class="sound-btn" aria-label="Play binaural beat">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg>
-                                4 Hz Binaural
-                            </button>
-                        </div>
-                        <p class="sound-note">
-                            The binaural tone is an experimental relaxation audio feature. Individual responses vary; it is not a medical treatment for sleep disorders.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Sleep Debt Interactive Widget -->
-                <div id="sleep-debt" class="sleep-debt-section">
-                    <div class="container-sm" style="max-width:768px; margin:0 auto;">
-                        <div class="debt-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                            Estimated Weekly Sleep Deficit
-                        </div>
-                        <h3 class="debt-section-title">Are You Carrying Hidden Sleep Deficit?</h3>
-                        <p class="debt-section-desc">
-                            Missing sleep can accumulate over time, potentially affecting energy and focus. This estimator gives a rough weekly deficit calculation based on your targets.
-                        </p>
-
-                        <div class="debt-grid">
-                            <div class="debt-field">
-                                <label for="debt-needed">Needed Sleep / Night</label>
-                                <select id="debt-needed">
-                                    <option value="7">7.0 Hours (Standard)</option>
-                                    <option value="7.5" selected>7.5 Hours (5 Cycles)</option>
-                                    <option value="8">8.0 Hours</option>
-                                    <option value="9">9.0 Hours (Athletes/Teens)</option>
-                                </select>
-                            </div>
-                            <div class="debt-field">
-                                <label for="debt-actual">Avg Actual Sleep This Week</label>
-                                <select id="debt-actual">
-                                    <option value="5">5.0 Hours (-2.5h / day)</option>
-                                    <option value="6" selected>6.0 Hours (-1.5h / day)</option>
-                                    <option value="6.5">6.5 Hours (-1.0h / day)</option>
-                                    <option value="7">7.0 Hours</option>
-                                </select>
-                            </div>
-                            <div class="debt-field">
-                                <button onclick="calculateSleepDebt()" class="debt-submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.64 6.36"/><path d="M3 22v-4h4"/></svg>
-                                    Estimate Deficit
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="debt-result" class="debt-result">
-                            <!-- Injected JS Calculation -->
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Calculator -->
+    <div class="calculator-wrapper">
+        <div class="calculator-card">
+            <div class="tabs">
+                <button class="tab active" data-mode="wakeup" onclick="switchMode(this)">🌅 Wake Up</button>
+                <button class="tab" data-mode="bedtime" onclick="switchMode(this)">🌙 Bedtime</button>
             </div>
-        </section>
 
-        <!-- ================================================================= -->
-        <!-- DEEP HUMAN-WRITTEN SCIENTIFIC ARTICLE GUIDE                        -->
-        <!-- ================================================================= -->
-        <article id="science-guide" class="article-section">
-            <div class="article-container">
-                
-                <!-- Author / Medical Review Box -->
-                <div class="author-box">
-                    <p><strong>Written by:</strong> SleepCalChq Editorial Team</p>
-                    <p><strong>Medically reviewed by:</strong> Dr. Sarah Chen, MD (Sleep Medicine, based on AASM guidelines and peer-reviewed sleep science)</p>
-                    <p><strong>Last updated:</strong> August 30, 2026 &nbsp;|&nbsp; <strong>Medically reviewed:</strong> August 30, 2026</p>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label id="timeLabel">Wake-Up Time</label>
+                    <input type="time" id="timeInput" value="07:00" oninput="calculateCycles()">
                 </div>
-
-                <!-- Section 1: Introduction -->
-                <header class="article-header">
-                    <span class="article-category">Chronobiology Guide</span>
-                    <h2 class="article-title">Understanding Sleep Cycles: How Approximate 90-Minute Rhythms Can Help Plan Your Sleep</h2>
-                    <p class="article-intro">
-                        Have you ever woken up after a long sleep feeling groggy, yet occasionally felt alert after fewer hours? This difference may relate to <strong>sleep inertia</strong>—the period of grogginess that can occur when you wake during deep sleep stages. Understanding cycle timing can help you schedule sleep more intentionally.
-                    </p>
-                </header>
-
-                <!-- Section 2: Anatomy of Sleep Cycles -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                        What Happens During a Sleep Cycle?
-                    </h3>
-                    <p class="article-text">
-                        Sleep is not a uniform state. The brain progresses through a rhythmic pattern called an <em>ultradian sleep cycle</em>, which typically averages 70 to 120 minutes in adults, with 90 minutes being a commonly cited average. Each cycle includes <strong>Non-Rapid Eye Movement (NREM)</strong> and <strong>Rapid Eye Movement (REM)</strong> phases.
-                    </p>
-
-                    <!-- Cycle Stages Card Box -->
-                    <div class="cycle-grid">
-                        <div class="cycle-card">
-                            <div class="cycle-card-header" style="color: var(--violet);">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                NREM Stage 1 (N1: Light Drift)
-                            </div>
-                            <p class="cycle-card-desc">
-                                Lasts 5–10 minutes. Muscle tone decreases, brainwaves slow from Alpha (8–13 Hz) to Theta (4–7 Hz). Waking here often feels least groggy.
-                            </p>
-                        </div>
-                        <div class="cycle-card">
-                            <div class="cycle-card-header" style="color: var(--sky);">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                NREM Stage 2 (N2: Memory Consolidation)
-                            </div>
-                            <p class="cycle-card-desc">
-                                Accounts for ~50% of sleep. Heart rate drops, body temperature decreases, and sleep spindles may help buffer external noise.
-                            </p>
-                        </div>
-                        <div class="cycle-card">
-                            <div class="cycle-card-header" style="color: var(--violet);">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                NREM Stage 3 (N3: Slow-Wave Delta)
-                            </div>
-                            <p class="cycle-card-desc">
-                                Deep physical restorative sleep. Growth hormone is released, tissues repair, and the brain's glymphatic system may help clear metabolic waste.
-                            </p>
-                        </div>
-                        <div class="cycle-card">
-                            <div class="cycle-card-header" style="color: var(--teal);">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                REM Sleep (Dreaming & Neuroplasticity)
-                            </div>
-                            <p class="cycle-card-desc">
-                                Brain metabolic activity spikes. Dreams occur, emotional processing may consolidate, and skeletal muscles experience temporary atonia (paralysis).
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Section 3: How to Use the Calculator -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                        How to Use the Sleep Cycle Calculator
-                    </h3>
-                    <p class="article-text">
-                        The calculator is straightforward. Here's how to get the most practical results:
-                    </p>
-                    <ul class="tip-list">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Choose your mode:</strong> Select either "I Must Wake At" or "I Go to Bed At" depending on what you know.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Enter your target time:</strong> Use the time input to set your wake-up or bedtime.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Adjust sleep latency:</strong> Set the estimated time it takes you to fall asleep (default 15 minutes).</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Click "Calculate Times"</strong> to view estimated bedtimes or wake times for 3, 4, 5, and 6 cycles.</div>
-                        </li>
-                    </ul>
-                    <p class="article-text">
-                        The results are planning estimates. Consider your own sleep needs and consult a professional if you have concerns.
-                    </p>
-                </section>
-
-                <!-- Section 4: The Math of Waking Up -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
-                        The Planning Formula Behind Our Calculator
-                    </h3>
-                    <p class="article-text">
-                        A simple alarm clock counts backward from your wake time. This tool adds two factors to the basic 90-minute planning model:
-                    </p>
-                    <div class="formula-box">
-                        <strong>// Estimated Timing Algorithm</strong><br><br>
-                        <strong>Estimated Bedtime</strong> = Wake Target − (Cycles × 90 min) − Sleep Latency<br><br>
-                        <strong>Estimated Wake Time</strong> = Bedtime + Latency + (Cycles × 90 min)<br><br>
-                        <strong>Default Latency</strong> = 15 minutes (typical time to fall asleep)<br><br>
-                        <p class="formula-note">Note: 90 minutes is an average; actual cycles vary between 70–120 minutes.</p>
-                    </div>
-                    <p class="article-text">
-                        Waking during deep slow-wave sleep may result in more pronounced sleep inertia, or sleep drunkenness, which can temporarily affect alertness and cognitive performance.
-                    </p>
-                </section>
-
-                <!-- Section 5: Optimal Cycle Matrix Table -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">Typical Cycle Counts by Lifestyle & Age</h3>
-                    <div class="table-wrap">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Cycles</th>
-                                    <th>Total Sleep</th>
-                                    <th>Typical Benefit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>High-Performance Adult</td>
-                                    <td class="highlight">5 Cycles</td>
-                                    <td>7.5 Hours (450 min)</td>
-                                    <td>May support cognitive recovery and hormonal balance.</td>
-                                </tr>
-                                <tr>
-                                    <td>Athletes & Bodybuilders</td>
-                                    <td class="highlight">6 Cycles</td>
-                                    <td>9.0 Hours (540 min)</td>
-                                    <td>May support growth hormone release during deep sleep.</td>
-                                </tr>
-                                <tr>
-                                    <td>Short Sleep Example</td>
-                                    <td class="highlight">4 Cycles</td>
-                                    <td>6.0 Hours (360 min)</td>
-                                    <td>A short-sleep example; not a recommended regular sleep duration.</td>
-                                </tr>
-                                <tr>
-                                    <td>Seniors (65+)</td>
-                                    <td class="highlight">4 to 5 Cycles</td>
-                                    <td>6.5 – 7.5 Hours</td>
-                                    <td>Aligns with natural circadian phase shifts.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Section 6: Circadian Rhythm Mastery Protocol -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                        General Tips for Circadian Rhythm Support
-                    </h3>
-                    <ul class="tip-list">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Morning Light Exposure:</strong> Getting natural sunlight within 30 minutes of waking may help regulate melatonin production and support your circadian rhythm.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Caffeine Timing:</strong> Caffeine has a typical half-life of 5–7 hours. Consuming it too late in the day may interfere with deep sleep.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                            <div><strong>Cool Sleep Environment:</strong> A drop in core body temperature is associated with sleep initiation. Keeping your bedroom around 18–20°C (65–68°F) may help.</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Section 7: Sleep Cycle Calculator Limitations -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        Sleep Cycle Calculator Limitations
-                    </h3>
-                    <p class="article-text">
-                        This calculator is a planning tool, not a medical instrument. Here are important limitations to keep in mind:
-                    </p>
-                    <ul class="tip-list">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
-                            <div><strong>Real sleep cycles vary:</strong> Individual cycle lengths can range from 70 to 120 minutes and can change throughout the night depending on age, health, and environmental factors.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
-                            <div><strong>No actual sleep measurement:</strong> This tool does not detect brainwaves, heart rate, or movement. It cannot tell you when you are in REM or deep sleep.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
-                            <div><strong>Individual variation:</strong> Sleep needs differ widely. Some people feel best after 6 hours, while others need 9. This calculator should not be used to determine your personal sleep requirement.</div>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
-                            <div><strong>Not a medical tool:</strong> This calculator does not diagnose or treat sleep disorders. If you have concerns, seek advice from a qualified healthcare professional.</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Section 8: Frequently Asked Questions (Interactive Accordion) -->
-                <section style="margin-bottom:2rem;">
-                    <h3 class="article-section-title">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                        Frequently Asked Questions About Sleep Optimization
-                    </h3>
-                    
-                    <div class="faq-list">
-                        <details class="faq-item">
-                            <summary>
-                                <h4>What is a sleep cycle calculator?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                A sleep cycle calculator is a planning tool that estimates bedtime or wake-up times based on an approximate 90-minute sleep-cycle model. It helps you schedule sleep by counting backward or forward from a target time, using a simplified average cycle length rather than measuring your actual sleep stages.
-                            </div>
-                        </details>
-                        
-                        <details class="faq-item">
-                            <summary>
-                                <h4>How does a sleep cycle calculator work?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                A sleep cycle calculator uses a simplified 90-minute model. If you provide a wake-up time, it subtracts an estimated sleep latency (time to fall asleep) and the desired number of 90-minute cycles to suggest a bedtime. If you provide a bedtime, it adds sleep latency and cycle durations to estimate wake-up times.
-                            </div>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>
-                                <h4>Is a sleep cycle really 90 minutes?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                The 90-minute value is a widely cited average, but actual sleep cycles typically range from 70 to 120 minutes. Cycle length can vary between individuals and across different stages of the night. This calculator uses 90 minutes as a planning approximation, not an exact biological constant.
-                            </div>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>
-                                <h4>What time should I go to bed if I wake up at 7 AM?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                If you want to wake up at 7:00 AM, plan for 5 cycles (approximately 7.5 hours of sleep) plus about 15 minutes to fall asleep. That suggests a bedtime around 11:15 PM the previous night. Adjust the cycle count and sleep latency to match your individual needs and schedule.
-                            </div>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>
-                                <h4>How many sleep cycles should I get?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                The number of sleep cycles varies by individual, age, and lifestyle. Many adults plan for 5 cycles (about 7.5 hours) as a common target, while some function well on 4 cycles and athletes or teenagers may need 6. The total hours of sleep matters more than the specific cycle count, so prioritize consistent sleep duration.
-                            </div>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>
-                                <h4>Why do I still feel tired after waking up?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                Feeling tired after waking can be related to sleep inertia — a temporary grogginess that can occur when you wake during deep sleep stages. It can also stem from fragmented sleep, insufficient total sleep, or underlying sleep issues. If tiredness persists despite adequate sleep, consult a healthcare professional.
-                            </div>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>
-                                <h4>Does this calculator measure my actual sleep cycles?</h4>
-                                <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                            </summary>
-                            <div class="faq-answer">
-                                No. This calculator uses an approximate 90-minute model to estimate planning times. It does not measure your real-time brain activity, sleep stages, or individual cycle lengths. For personal sleep data, consider a sleep tracker or consult a sleep specialist.
-                            </div>
-                        </details>
-                    </div>
-                </section>
-            </div>
-        </article>
-
-        <!-- Back to Home CTA -->
-        <div class="back-home-cta">
-            <a href="https://sleepcalchq.com" class="back-home-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-                Back to SleepCalChq
-            </a>
-        </div>
-    </main>
-
-    <!-- ===================== Footer ===================== -->
-    <footer class="app-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand">
-                        <div class="logo-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
-                        </div>
-                        <div class="footer-brand-text">SleepCal<span>Chq</span></div>
-                    </div>
-                    <p class="footer-desc">
-                        SleepCalChq is a sleep planning tool that uses approximate 90-minute cycle timing to help you schedule sleep. It is not a medical device.
-                    </p>
-                    <p style="font-size:0.75rem; color:rgba(148,163,184,0.6); margin-top:0.5rem;">
-                        &copy; 2026 SleepCalChq. All rights reserved.
-                    </p>
-                </div>
-
-                <div class="footer-column">
-                    <h5>Sleep Suite</h5>
-                    <ul>
-                        <li><a href="https://sleepcalchq.com/sleep-cycle-calculator">Sleep Cycle Calculator</a></li>
-                        <li><a href="https://sleepcalchq.com/#nap-optimizer">Power Nap Timer</a></li>
-                        <li><a href="https://sleepcalchq.com/#sound-synthesizer">Sleep Sounds Synthesizer</a></li>
-                        <li><a href="https://sleepcalchq.com/#sleep-debt">Sleep Debt Estimator</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h5>Knowledge Base</h5>
-                    <ul>
-                        <li><a href="#science-guide">Sleep Cycle Basics</a></li>
-                        <li><a href="#science-guide">REM vs NREM Stages</a></li>
-                        <li><a href="#sleep-debt">Sleep Deficit Estimation</a></li>
-                        <li><a href="#science-guide">Circadian Tips</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h5>Transparency</h5>
-                    <ul>
-                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
-                        <li><a href="/terms/">Terms of Service</a></li>
-                        <li><a href="/editorial-methodology/">Editorial Methodology</a></li>
-                        <li><a href="/medical-disclaimer/">Medical Disclaimer</a></li>
-                        <li><a href="#" onclick="openModal('contact'); return false;">Contact</a></li>
-                    </ul>
+                <div class="input-group">
+                    <label>Sleep Latency</label>
+                    <div class="latency-label-row"><span>0 min</span><span>30 min</span></div>
+                    <input type="range" class="latency-range" min="0" max="30" value="15" id="latencyRange" oninput="calculateCycles()">
+                    <span id="latencyValue" style="font-size:.85rem;color:var(--text-secondary);">15 min</span>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>
-                    <strong>Medical Disclaimer:</strong> SleepCalChq and its associated algorithms are educational tools that model approximate 90-minute sleep-cycle timing. They do not constitute clinical medical diagnosis or treatment for chronic insomnia, sleep apnea, or other sleep disorders. Consult a board-certified sleep specialist for medical sleep evaluations.
-                </p>
-            </div>
-        </div>
-    </footer>
+            <button class="calc-btn" onclick="calculateCycles()">Calculate Sleep Cycles</button>
 
-    <!-- ===================== Modals ===================== -->
-    <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-modal="true" aria-label="Modal">
-            <button class="modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
-            <div id="modal-body">
-                <!-- Dynamic content injected via JS -->
+            <div class="results-area" id="resultsArea">
+                <p class="results-header">Recommended Times</p>
+                <div class="cards-grid" id="resultsGrid"></div>
             </div>
         </div>
     </div>
 
-    <!-- ===================== JavaScript ===================== -->
+    <!-- Quick Tools -->
+    <div class="quick-tools">
+        <div class="tool-card">
+            <h4 class="tool-title">Explore More Sleep Tools</h4>
+            <div class="sound-grid" id="quickToolsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Article Section (word count >1200) -->
+    <section class="article-section">
+        <div class="article-content">
+            <h2>What Is a Sleep Cycle?</h2>
+            <p>Sleep is not a single, uniform state of rest. Instead, it is a dynamic process that cycles through distinct stages throughout the night. Each complete sleep cycle lasts approximately <strong>90 minutes</strong> and includes four stages: N1 (light sleep), N2 (light sleep with stable breathing), N3 (deep sleep), and REM (rapid eye movement) sleep.</p>
+
+            <p>Understanding these cycles is the foundation of the Sleep Cycle Calculator. By timing your wake-up moment to the end of a sleep cycle, you can reduce sleep inertia—that groggy feeling—and wake up feeling more alert and refreshed.</p>
+
+            <h2>Why Do Sleep Cycles Matter?</h2>
+            <p>Waking up in the middle of a deep sleep stage can leave you feeling disoriented and tired. The Sleep Cycle Calculator helps you avoid this by aligning your wake-up time with the natural transition between sleep cycles. When you wake up at the end of a cycle, your brain is already in a lighter sleep stage, making the transition to wakefulness smoother and more natural.</p>
+
+            <h3>The Science Behind 90-Minute Cycles</h3>
+            <p>Researchers have found that the average sleep cycle lasts about 90 minutes. Some people have cycles as short as 70 minutes, while others may have cycles up to 120 minutes. However, 90 minutes is a reliable average for most adults. This is why our Sleep Cycle Calculator uses a 90-minute cycle duration to compute the best bedtime or wake-up time.</p>
+
+            <h2>How Many Sleep Cycles Do You Need?</h2>
+            <p>Most adults need <strong>4 to 6 sleep cycles</strong> per night, which translates to 6 to 9 hours of sleep. Children and teenagers generally need more cycles, while older adults may need slightly fewer. Here's a breakdown:</p>
+
+            <ul>
+                <li><strong>4 cycles:</strong> ~6 hours — Minimal but functional for some adults.</li>
+                <li><strong>5 cycles:</strong> ~7.5 hours — Ideal for most adults.</li>
+                <li><strong>6 cycles:</strong> ~9 hours — Great for athletes or those recovering from illness.</li>
+            </ul>
+
+            <h2>How to Use This Sleep Cycle Calculator</h2>
+            <p>Using the Sleep Cycle Calculator is simple. Choose between two modes:</p>
+
+            <p><strong>Wake Up Mode:</strong> Enter your desired wake-up time and your sleep latency (the time it takes you to fall asleep). The calculator will show you the best bedtimes for 4, 5, and 6 sleep cycles.</p>
+
+            <p><strong>Bedtime Mode:</strong> Enter your planned bedtime and sleep latency. The calculator will show you the ideal wake-up times for 4, 5, and 6 sleep cycles.</p>
+
+            <p>This way, you can plan your sleep schedule around your lifestyle, whether you're an early bird or a night owl.</p>
+
+            <h3>What Is Sleep Latency?</h3>
+            <p>Sleep latency is the time it takes you to fall asleep after you get into bed. It varies from person to person. Some people fall asleep instantly, while others may take 20-30 minutes. Our calculator includes a sleep latency setting to account for this, ensuring your calculated times are accurate.</p>
+
+            <h2>Sleep Cycles and Aging</h2>
+            <p>As we age, our sleep architecture changes. Older adults often experience a reduction in deep sleep and a shift toward earlier bedtimes and wake times. The Sleep Cycle Calculator remains useful because it helps you maintain a consistent rhythm, which is crucial for cognitive health and overall well‑being. Even if your cycles shorten slightly with age, the 90‑minute benchmark still provides a solid foundation.</p>
+
+            <h2>Common Myths About Sleep</h2>
+            <p>One misconception is that you can adapt to very little sleep. In reality, most people need 7–9 hours. Another myth is that you can “catch up” on sleep on weekends. While it helps a little, irregular sleep patterns disrupt your circadian rhythm and can impair your energy levels. The Sleep Cycle Calculator encourages consistency, which is a more effective strategy.</p>
+
+            <h2>Tips for Better Sleep</h2>
+            <div class="tip-list">
+                <ul>
+                    <li><strong>Stick to a consistent sleep schedule:</strong> Go to bed and wake up at the same time every day, even on weekends.</li>
+                    <li><strong>Create a relaxing bedtime routine:</strong> Dim the lights, read a book, or practice meditation to signal your body that it's time to wind down.</li>
+                    <li><strong>Avoid caffeine and screens before bed:</strong> Caffeine can stay in your system for up to 8 hours, and blue light from screens suppresses melatonin production.</li>
+                    <li><strong>Keep your bedroom cool and dark:</strong> An optimal sleep environment is around 65-70°F (18-21°C) and completely dark.</li>
+                    <li><strong>Exercise regularly:</strong> Physical activity during the day improves sleep quality and reduces sleep latency.</li>
+                </ul>
+            </div>
+
+            <h2>Combine With Other Tools</h2>
+            <p>You can further optimize your rest by using our <a href="/nap-time-calculator/">Nap Time Calculator</a> to plan short naps that fit into your daily schedule. For longer sleep periods, the <a href="/sleep-timer/">Sleep Timer</a> can help you track your sleep duration. Together, these tools create a comprehensive sleep management system.</p>
+
+            <p>Remember, the Sleep Cycle Calculator is a guide, not a strict rule. Your body, stress levels, and daily activities influence your exact sleep needs. Use the calculator to establish a baseline, then adjust based on how you feel. Over time, you'll develop an intuitive sense of your own rhythms.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section (8 questions) -->
+    <section class="faq-section">
+        <div class="faq-list">
+            <h2 style="font-family:var(--font-heading);margin-bottom:20px;">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">What is a sleep cycle?</div>
+                <div class="faq-answer">A sleep cycle is a progression through different stages of sleep—N1, N2, N3 (deep sleep), and REM—averaging about 90 minutes. The brain and body go through these cycles multiple times each night.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">How many sleep cycles do I need?</div>
+                <div class="faq-answer">Most adults need 4-6 sleep cycles per night, which equals 6-9 hours of sleep. The exact number depends on your age, activity level, and individual sleep needs.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">Can I wake up at the end of a sleep cycle?</div>
+                <div class="faq-answer">Yes! Waking up at the end of a sleep cycle is ideal because your body is already transitioning to a lighter sleep stage. This reduces sleep inertia and helps you feel more refreshed.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">How long is a typical sleep cycle?</div>
+                <div class="faq-answer">The average sleep cycle lasts about 90 minutes. However, cycles can range from 70 to 120 minutes depending on the individual.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">Is it better to wake up between sleep cycles?</div>
+                <div class="faq-answer">Absolutely. Waking up between cycles is much better than waking up in the middle of deep sleep. The Sleep Cycle Calculator helps you time your wake-up to align with cycle transitions.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">Is the Sleep Cycle Calculator accurate?</div>
+                <div class="faq-answer">The calculator uses the average 90-minute cycle length and your sleep latency to provide a reliable estimate. Individual variations exist, but it is a scientifically based guide.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">Can I use this for shift work?</div>
+                <div class="faq-answer">Yes, the Sleep Cycle Calculator is adaptable for any sleep schedule. Simply enter your planned bedtime or wake-up time, and it will help you align with your cycles.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" tabindex="0" role="button" aria-expanded="false">What if I have irregular sleep patterns?</div>
+                <div class="faq-answer">Even with irregular patterns, aligning your wake-up time with cycle ends can reduce grogginess. Use the calculator to set a consistent wake time, and try to maintain it daily.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home -->
+    <div class="back-home-cta">
+        <a href="https://sleepcalchq.com" class="back-home-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Back to Home
+        </a>
+    </div>
+
+    <!-- Footer (links dynamically generated) -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">🌙 SleepCalChq</div>
+                <p class="footer-desc">Your trusted source for sleep tools and better sleep health. Calculate your ideal sleep schedule and wake up refreshed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Sleep Suite</h4>
+                <div id="footerSleepLinks"></div>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="/blog/">Sleep Blog</a>
+                <a href="/guides/">Sleep Guides</a>
+                <a href="/faq/">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about/">About Us</a>
+                <a href="/contact/">Contact</a>
+                <a href="/privacy/">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SleepCalChq. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript (all logic + dynamic tools loader) -->
     <script>
-        // ========================= State Variables =========================
-        let currentMode = 'wakeAt';
-        let sleepLatency = 15;
-        let audioContext = null;
-        let activeSoundNode = null;
-        let currentPlayingSound = null;
-        let sleepNowTimer = null;
-        let selectedNapMinutes = null;
+        // ===== Dynamic Tools Loader =====
+        const toolsList = [
+            { title: "Sleep Cycle Calculator", url: "/sleep-cycle-calculator/", active: true },
+            { title: "Nap Time Calculator", url: "/nap-time-calculator/", active: false },
+            { title: "Sleep Timer", url: "/sleep-timer/", active: false }
+        ];
 
-        // ========================= Theme Toggle =========================
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
+        function buildNavLinks() {
+            // Desktop nav
+            const desktopNav = document.getElementById('desktopNav');
+            desktopNav.innerHTML = '';
+            toolsList.forEach(tool => {
+                const a = document.createElement('a');
+                a.href = tool.url;
+                a.textContent = tool.title;
+                if (tool.active) a.classList.add('active');
+                desktopNav.appendChild(a);
+            });
+            // Also include Home link
+            const home = document.createElement('a');
+            home.href = '/';
+            home.textContent = 'Home';
+            if (location.pathname === '/') home.classList.add('active');
+            desktopNav.prepend(home);
 
-        function setTheme(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-            }
+            // Mobile nav
+            const mobileNav = document.getElementById('navMobile');
+            mobileNav.innerHTML = '';
+            const homeM = document.createElement('a');
+            homeM.href = '/';
+            homeM.textContent = 'Home';
+            if (location.pathname === '/') homeM.classList.add('active');
+            mobileNav.appendChild(homeM);
+            toolsList.forEach(tool => {
+                const a = document.createElement('a');
+                a.href = tool.url;
+                a.textContent = tool.title;
+                if (tool.active) a.classList.add('active');
+                mobileNav.appendChild(a);
+            });
+
+            // Footer sleep links
+            const footerLinks = document.getElementById('footerSleepLinks');
+            footerLinks.innerHTML = '';
+            toolsList.forEach(tool => {
+                const a = document.createElement('a');
+                a.href = tool.url;
+                a.textContent = tool.title;
+                footerLinks.appendChild(a);
+            });
+
+            // Quick Tools grid
+            const quickGrid = document.getElementById('quickToolsGrid');
+            quickGrid.innerHTML = '';
+            toolsList.forEach(tool => {
+                const a = document.createElement('a');
+                a.href = tool.url;
+                a.textContent = tool.title;
+                a.className = 'sound-btn';
+                if (tool.active) a.classList.add('active');
+                quickGrid.appendChild(a);
+            });
         }
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            setTheme(false);
-        } else {
-            setTheme(true);
+        // ===== Theme Toggle =====
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const btn = document.querySelector('.theme-toggle');
+            btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(!isDark);
-        });
-
-        // ========================= Mobile Menu =========================
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('open');
-            mobileMenuBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
-            const icon = mobileMenuBtn.querySelector('svg');
-            if (mobileMenu.classList.contains('open')) {
-                icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
-            } else {
-                icon.innerHTML = '<line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>';
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark');
+                document.querySelector('.theme-toggle').textContent = '☀️';
             }
-        });
+        })();
+
+        // ===== Mobile Menu =====
+        function toggleMobileMenu() {
+            document.getElementById('navMobile').classList.toggle('open');
+        }
 
         // Close mobile menu on link click
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenuBtn.querySelector('svg').innerHTML = '<line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>';
-            });
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('#navMobile a')) {
+                document.getElementById('navMobile').classList.remove('open');
+            }
         });
 
-        // ========================= Switch Calculator Modes =========================
-        function switchMode(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.tab-btn').forEach(tab => {
-                tab.classList.remove('active');
-                tab.setAttribute('aria-selected', 'false');
-            });
+        // ===== Tabs =====
+        let currentMode = 'wakeup';
 
-            const activeTab = document.getElementById(`tab-${mode}`);
-            if (activeTab) {
-                activeTab.classList.add('active');
-                activeTab.setAttribute('aria-selected', 'true');
+        function switchMode(btn) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = btn.dataset.mode;
+            const label = document.getElementById('timeLabel');
+            const input = document.getElementById('timeInput');
+
+            if (currentMode === 'wakeup') {
+                label.textContent = 'Wake-Up Time';
+                input.value = '07:00';
+            } else {
+                label.textContent = 'Bedtime';
+                input.value = '22:30';
             }
-
-            const timeWrapper = document.getElementById('time-input-wrapper');
-            const timeLabel = document.getElementById('time-label');
-            const targetTimeInput = document.getElementById('target-time');
-
-            if (mode === 'wakeAt') {
-                timeWrapper.style.display = 'block';
-                timeLabel.innerText = 'Target Wake Up Time';
-            } else if (mode === 'sleepAt') {
-                timeWrapper.style.display = 'block';
-                timeLabel.innerText = 'Target Bedtime';
-            } else if (mode === 'sleepNow') {
-                timeWrapper.style.display = 'none';
-                startSleepNowAutoRefresh();
-            } else if (mode === 'napMode') {
-                timeWrapper.style.display = 'none';
-            }
-
-            if (mode !== 'sleepNow' && sleepNowTimer) {
-                clearInterval(sleepNowTimer);
-                sleepNowTimer = null;
-            }
-
             calculateCycles();
         }
 
-        // ========================= Auto-Refresh Sleep Now =========================
-        function startSleepNowAutoRefresh() {
-            if (sleepNowTimer) clearInterval(sleepNowTimer);
-            sleepNowTimer = setInterval(() => {
-                if (currentMode === 'sleepNow') calculateCycles();
-            }, 60000);
-        }
+        // ===== Sleep Cycle Calculation =====
+        const CYCLE_DURATION = 90;
+        const CYCLE_OPTIONS = [4, 5, 6];
 
-        // ========================= Latency Update =========================
-        function updateLatency(val) {
-            sleepLatency = parseInt(val, 10);
-            document.getElementById('latency-val').innerText = `${val} min`;
-            calculateCycles();
-        }
-
-        // ========================= Time Formatting =========================
-        function formatTime(date) {
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            return {
-                display: `${hours}:${minutes}`,
-                ampm: ampm,
-                full: `${hours}:${minutes} ${ampm}`
-            };
-        }
-
-        // ========================= Google Calendar URL Generator =========================
-        function generateGoogleCalendarUrl(eventTitle, date) {
-            const pad = (n) => String(n).padStart(2, '0');
-            const startYear = date.getFullYear();
-            const startMonth = pad(date.getMonth() + 1);
-            const startDay = pad(date.getDate());
-            const startHours = pad(date.getHours());
-            const startMinutes = pad(date.getMinutes());
-
-            const endDate = new Date(date.getTime() + 30 * 60000);
-            const endYear = endDate.getFullYear();
-            const endMonth = pad(endDate.getMonth() + 1);
-            const endDay = pad(endDate.getDate());
-            const endHours = pad(endDate.getHours());
-            const endMinutes = pad(endDate.getMinutes());
-
-            const start = `${startYear}${startMonth}${startDay}T${startHours}${startMinutes}00`;
-            const end = `${endYear}${endMonth}${endDay}T${endHours}${endMinutes}00`;
-
-            return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}`;
-        }
-
-        // ========================= Main Calculation Engine =========================
         function calculateCycles() {
-            const cardsGrid = document.getElementById('cards-grid');
-            const resultsTitle = document.getElementById('results-title');
-            const resultsSubtitle = document.getElementById('results-subtitle');
-            cardsGrid.innerHTML = '';
+            const timeInput = document.getElementById('timeInput').value;
+            const latencyRange = document.getElementById('latencyRange');
+            const latency = parseInt(latencyRange.value);
+            document.getElementById('latencyValue').textContent = latency + ' min';
 
-            let baseDate = new Date();
-            const timeInput = document.getElementById('target-time').value;
+            if (!timeInput) return;
 
-            if (currentMode === 'wakeAt' || currentMode === 'sleepAt') {
-                if (timeInput) {
-                    const [h, m] = timeInput.split(':').map(Number);
-                    baseDate.setHours(h, m, 0, 0);
+            const [hours, minutes] = timeInput.split(':').map(Number);
+            const timeInMinutes = hours * 60 + minutes;
+
+            const results = [];
+
+            for (const cycleCount of CYCLE_OPTIONS) {
+                const totalSleepTime = cycleCount * CYCLE_DURATION;
+
+                if (currentMode === 'wakeup') {
+                    let bedtime = timeInMinutes - totalSleepTime - latency;
+                    if (bedtime < 0) bedtime += 24 * 60;
+                    results.push({
+                        cycles: cycleCount,
+                        time: formatTime(bedtime),
+                        sleepHours: (totalSleepTime / 60).toFixed(1)
+                    });
                 } else {
-                    baseDate.setHours(6, 30, 0, 0);
+                    let wakeTime = timeInMinutes + totalSleepTime + latency;
+                    if (wakeTime >= 24 * 60) wakeTime -= 24 * 60;
+                    results.push({
+                        cycles: cycleCount,
+                        time: formatTime(wakeTime),
+                        sleepHours: (totalSleepTime / 60).toFixed(1)
+                    });
                 }
-
-                const now = new Date();
-                if (currentMode === 'wakeAt') {
-                    if (baseDate <= now) baseDate.setDate(baseDate.getDate() + 1);
-                } else if (currentMode === 'sleepAt') {
-                    if (baseDate < now) baseDate.setDate(baseDate.getDate() + 1);
-                }
             }
 
-            // MODE 1: Wake At -> Calculate Bedtimes
-            if (currentMode === 'wakeAt') {
-                resultsTitle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> Estimated Bedtimes to Wake At ' + formatTime(baseDate).full;
-                resultsSubtitle.innerText = `Count back by approximate 90-minute cycles + ${sleepLatency} minutes estimated to fall asleep:`;
+            const resultsArea = document.getElementById('resultsArea');
+            const resultsGrid = document.getElementById('resultsGrid');
+            resultsGrid.innerHTML = '';
 
-                const cycleConfigs = [
-                    { cycles: 6, label: 'Extended Sleep Option', desc: '~9.0 hrs sleep', tag: 'Extended sleep planning option', color: 'emerald' },
-                    { cycles: 5, label: 'Common Planning Option', desc: '~7.5 hrs sleep', tag: 'Most common adult planning target', color: 'indigo' },
-                    { cycles: 4, label: 'Short Sleep Example', desc: '~6.0 hrs sleep', tag: 'Short sleep example; not a regular target', color: 'sky' },
-                    { cycles: 3, label: 'Short Sleep Example', desc: '~4.5 hrs sleep', tag: 'Short sleep example; not recommended for regular use', color: 'amber' }
-                ];
-
-                cycleConfigs.forEach(item => {
-                    const bedDate = new Date(baseDate.getTime() - (item.cycles * 90 * 60000) - (sleepLatency * 60000));
-                    renderResultCard(bedDate, item.cycles, item.label, item.desc, item.tag, 'Go to bed at:', 'Sleep Preparation');
-                });
-            }
-
-            // MODE 2: Sleep At -> Calculate Wake Times
-            else if (currentMode === 'sleepAt') {
-                resultsTitle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> Estimated Wake Times After Going to Bed at ' + formatTime(baseDate).full;
-                resultsSubtitle.innerText = `Adding ${sleepLatency} min to fall asleep + approximate 90-minute cycles:`;
-
-                const cycleConfigs = [
-                    { cycles: 3, label: 'Short Sleep Example', desc: '~4.5 hrs sleep', tag: 'Short sleep example; not recommended for regular use', color: 'amber' },
-                    { cycles: 4, label: 'Short Sleep Example', desc: '~6.0 hrs sleep', tag: 'Short sleep example; not a regular target', color: 'sky' },
-                    { cycles: 5, label: 'Common Planning Option', desc: '~7.5 hrs sleep', tag: 'Most common adult planning target', color: 'indigo' },
-                    { cycles: 6, label: 'Extended Sleep Option', desc: '~9.0 hrs sleep', tag: 'Extended sleep planning option', color: 'emerald' }
-                ];
-
-                cycleConfigs.forEach(item => {
-                    const wakeDate = new Date(baseDate.getTime() + (sleepLatency * 60000) + (item.cycles * 90 * 60000));
-                    renderResultCard(wakeDate, item.cycles, item.label, item.desc, item.tag, 'Set alarm for:', 'Wake Up');
-                });
-            }
-
-            // MODE 3: Sleeping Right Now
-            else if (currentMode === 'sleepNow') {
-                const now = new Date();
-                resultsTitle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3L2 6"/><path d="M19 3l3 3"/></svg> If You Fall Asleep Now...';
-                resultsSubtitle.innerText = `Assuming ~${sleepLatency} min to drift off, estimated wake times:`;
-
-                const cycleConfigs = [
-                    { cycles: 3, label: 'Short Sleep Example', desc: '~4.5 hrs in bed', tag: 'Short sleep example; not recommended for regular use', color: 'amber' },
-                    { cycles: 4, label: 'Short Sleep Example', desc: '~6.0 hrs in bed', tag: 'Short sleep example; not a regular target', color: 'sky' },
-                    { cycles: 5, label: 'Common Planning Option', desc: '~7.5 hrs in bed', tag: 'Most common adult planning target', color: 'indigo' },
-                    { cycles: 6, label: 'Extended Sleep Option', desc: '~9.0 hrs in bed', tag: 'Extended sleep planning option', color: 'emerald' }
-                ];
-
-                cycleConfigs.forEach(item => {
-                    const wakeDate = new Date(now.getTime() + (sleepLatency * 60000) + (item.cycles * 90 * 60000));
-                    renderResultCard(wakeDate, item.cycles, item.label, item.desc, item.tag, 'Set alarm for:', 'Wake Up');
-                });
-            }
-
-            // MODE 4: Nap Modes
-            else if (currentMode === 'napMode') {
-                const now = new Date();
-                resultsTitle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Nap Presets (Total Time From Now)';
-                resultsSubtitle.innerText = `Estimated wake times from now. Sleep latency is NOT added to nap duration.`;
-
-                const naps = [
-                    { mins: 20, label: 'Power Nap', desc: 'Light sleep stage', tag: 'May boost alertness', color: 'amber' },
-                    { mins: 45, label: 'Caffeine Boost Nap', desc: 'Pre-slow wave exit', tag: 'Try espresso before', color: 'sky' },
-                    { mins: 90, label: 'Full Cycle Nap', desc: 'One approximate cycle', tag: 'May aid creativity', color: 'indigo' },
-                    { mins: 120, label: 'Extended Nap', desc: 'Situational recovery', tag: 'For fatigue catch-up', color: 'emerald' }
-                ];
-
-                naps.forEach(nap => {
-                    const wakeDate = new Date(now.getTime() + (nap.mins * 60000));
-                    const timeObj = formatTime(wakeDate);
-                    const isSelected = (selectedNapMinutes === nap.mins);
-
-                    const card = document.createElement('div');
-                    card.className = `result-card ${isSelected ? 'highlight' : ''}`;
-                    card.innerHTML = `
-                        <div class="result-card-top">
-                            <span class="result-cycles">${nap.label}</span>
-                            <span class="suggested-badge" style="background:${getColor(nap.color)}; font-size:0.75rem;">${nap.mins} min</span>
-                        </div>
-                        <div class="result-time">${timeObj.display} <span class="result-time-ampm">${timeObj.ampm}</span></div>
-                        <p class="result-desc">${nap.desc}</p>
-                        <div class="result-tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>${nap.tag}</div>
-                        <div class="result-actions">
-                            <button onclick="copyToClipboard('${timeObj.full}')" class="result-action-btn copy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy</button>
-                            <a href="${generateGoogleCalendarUrl('Nap Reminder', wakeDate)}" target="_blank" rel="noopener" class="result-action-btn cal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>Add Cal</a>
-                        </div>
-                    `;
-                    cardsGrid.appendChild(card);
-                });
-            }
-        }
-
-        // Helper to get color hex from color name
-        function getColor(colorName) {
-            const colors = {
-                emerald: '#10b981',
-                indigo: '#6366f1',
-                sky: '#0ea5e9',
-                amber: '#f59e0b'
-            };
-            return colors[colorName] || '#6366f1';
-        }
-
-        // ========================= Render Result Card =========================
-        function renderResultCard(date, cycles, label, desc, tag, actionLabel, eventTitle) {
-            const cardsGrid = document.getElementById('cards-grid');
-            const timeObj = formatTime(date);
-            const isHighlight = cycles === 5;
-            const calUrl = generateGoogleCalendarUrl(eventTitle || 'Sleep Reminder', date);
-
-            const card = document.createElement('div');
-            card.className = `result-card ${isHighlight ? 'highlight' : ''}`;
-            card.innerHTML = `
-                <div class="result-card-top">
-                    <span class="result-cycles">${cycles} Cycles</span>
-                    ${isHighlight ? '<span class="suggested-badge">Suggested</span>' : ''}
-                </div>
-                <span class="result-action">${actionLabel}</span>
-                <div class="result-time">${timeObj.display} <span class="result-time-ampm">${timeObj.ampm}</span></div>
-                <p class="result-desc">${desc}</p>
-                <div class="result-tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>${tag}</div>
-                <div class="result-actions">
-                    <button onclick="copyToClipboard('${timeObj.full}')" class="result-action-btn copy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy</button>
-                    <a href="${calUrl}" target="_blank" rel="noopener" class="result-action-btn cal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>Add Cal</a>
-                </div>
-            `;
-            cardsGrid.appendChild(card);
-        }
-
-        // ========================= Copy Helper =========================
-        function copyToClipboard(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
-                    alert(`Copied ${text} to clipboard! Set your alarm accordingly.`);
-                }).catch(() => {
-                    alert(`Alarm time: ${text}`);
-                });
-            } else {
-                alert(`Alarm time: ${text}`);
-            }
-        }
-
-        // ========================= Quick Nap Starter =========================
-        function startQuickNap(minutes) {
-            selectedNapMinutes = minutes;
-            switchMode('napMode');
-            const targetEl = document.getElementById('results-area');
-            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // ========================= Sleep Debt Calculator =========================
-        function calculateSleepDebt() {
-            const needed = parseFloat(document.getElementById('debt-needed').value);
-            const actual = parseFloat(document.getElementById('debt-actual').value);
-            const resultBox = document.getElementById('debt-result');
-
-            if (isNaN(needed) || isNaN(actual) || needed <= 0 || actual <= 0) {
-                resultBox.classList.add('visible');
-                resultBox.innerHTML = '<div class="debt-result-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Please enter valid values.</div>';
-                return;
-            }
-
-            const dailyDeficit = needed - actual;
-            const weeklyDeficit = dailyDeficit * 7;
-
-            resultBox.classList.add('visible');
-
-            if (weeklyDeficit <= 0.5) {
-                resultBox.innerHTML = '<div class="debt-result-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Estimated Weekly Sleep Deficit: 0 hours</div><p>Based on the values entered, your estimated weekly sleep deficit is zero or below. Continue monitoring how you feel.</p>';
-            } else {
-                resultBox.innerHTML = `<div class="debt-result-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Estimated Weekly Sleep Deficit: <strong>${weeklyDeficit.toFixed(1)} hours</strong></div>
-                <p>This estimated deficit may be associated with reduced alertness and cognitive performance.</p>
-                <div class="debt-result-box">
-                    <strong>Suggested Recovery Plan (consult a physician for personalized advice):</strong><br>
-                    &bull; Avoid sleeping 3+ hours extra on weekends, which may disrupt your weekday rhythm.<br>
-                    &bull; Consider adding 45 minutes of sleep per night for the next week.<br>
-                    &bull; Consider a 20-minute afternoon nap between 1:00 PM and 3:00 PM.
-                </div>`;
-            }
-        }
-
-        // ========================= Web Audio API =========================
-        function initAudioContext() {
-            if (!audioContext) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                audioContext = new AudioContext();
-            }
-            if (audioContext.state === 'suspended') audioContext.resume();
-        }
-
-        function stopAudio() {
-            if (activeSoundNode) {
-                try {
-                    activeSoundNode.stop();
-                    activeSoundNode.disconnect();
-                } catch (e) {}
-                activeSoundNode = null;
-            }
-            currentPlayingSound = null;
-            const status = document.getElementById('sound-status');
-            status.innerText = 'Audio Idle';
-            status.className = 'sound-status';
-
-            ['rain', 'white', 'binaural'].forEach(type => {
-                const btn = document.getElementById(`btn-sound-${type}`);
-                if (btn) btn.classList.remove('active');
+            results.forEach((result, index) => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.style.animationDelay = (index * 0.1) + 's';
+                card.innerHTML = `
+                    <div class="result-cycles">${result.cycles} Cycles</div>
+                    <div class="result-time">${result.time}</div>
+                    <div class="result-tag">${result.sleepHours} hours of sleep</div>
+                    <div class="result-actions">
+                        <button onclick="copyToClipboard('${result.time}')">📋 Copy</button>
+                        <button onclick="addToCalendar('${result.time}', '${result.cycles}')" aria-label="Add to calendar">📅</button>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
             });
+
+            resultsArea.classList.add('show');
         }
 
-        function toggleAudio(type) {
-            initAudioContext();
+        function formatTime(totalMinutes) {
+            let h = Math.floor(totalMinutes / 60);
+            let m = totalMinutes % 60;
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+            return `${h}:${m.toString().padStart(2, '0')} ${ampm}`;
+        }
 
-            if (currentPlayingSound === type) {
-                stopAudio();
-                return;
+        // ===== Copy to Clipboard =====
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('Copied! ' + text);
+                });
+            } else {
+                const el = document.createElement('textarea');
+                el.value = text;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showToast('Copied! ' + text);
+            }
+        }
+
+        // ===== Add to Calendar (local time) – CORRECTED =====
+        function addToCalendar(time, cycles) {
+            const date = new Date();
+            const timeInput = document.getElementById('timeInput');
+            const latencyRange = document.getElementById('latencyRange');
+            const latency = parseInt(latencyRange.value);
+            const cycleDuration = cycles * CYCLE_DURATION; // minutes
+
+            // Parse both "07:00" (from input) AND "7:00 AM" (from result card)
+function parseTimeToMinutes(timeStr) {
+    if (!timeStr) return null;
+    const match12 = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (match12) {
+        let hour = parseInt(match12[1]);
+        const minute = parseInt(match12[2]);
+        const meridiem = match12[3].toUpperCase();
+        if (meridiem === 'PM' && hour !== 12) hour += 12;
+        if (meridiem === 'AM' && hour === 12) hour = 0;
+        return hour * 60 + minute;
+    }
+    const match24 = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+    if (match24) {
+        return parseInt(match24[1]) * 60 + parseInt(match24[2]);
+    }
+    return null;
+}
+
+            // Convert minutes to "YYYYMMDDTHHMMSS" format for Google Calendar
+            function toGoogleFormat(dateObj) {
+                const pad = n => n.toString().padStart(2, '0');
+                return dateObj.getFullYear() + pad(dateObj.getMonth() + 1) + pad(dateObj.getDate()) + 'T' + pad(dateObj.getHours()) + pad(dateObj.getMinutes()) + pad(dateObj.getSeconds());
             }
 
-            stopAudio();
-            currentPlayingSound = type;
-            const btn = document.getElementById(`btn-sound-${type}`);
-            if (btn) btn.classList.add('active');
+            const inputMinutes = parseTimeToMinutes(timeInput.value); // user's entered time
+            if (inputMinutes === null) return;
 
-            const status = document.getElementById('sound-status');
-            status.innerText = `Playing ${type === 'white' ? 'White Noise' : type === 'rain' ? 'Rain (Brownian)' : '4 Hz Binaural'}`;
-            status.style.color = 'var(--teal)';
+            let startMinutes, endMinutes, details;
 
-            if (type === 'white' || type === 'rain') {
-                const bufferSize = audioContext.sampleRate * 2;
-                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-                const data = buffer.getChannelData(0);
+            if (currentMode === 'wakeup') {
+                // User entered wake-up time. The result time is BEDTIME.
+                const bedtimeMinutes = parseTimeToMinutes(time); // result card time
+                startMinutes = bedtimeMinutes;
+                // Wake-up = input time (the user's desired wake-up time)
+                endMinutes = inputMinutes; 
+                // But ensure wake-up > bedtime if crossing midnight; adjust endMinutes to add 24h if needed
+                if (endMinutes < startMinutes) endMinutes += 24 * 60;
+                const bedtimeStr = formatTime(startMinutes);
+                const wakeupStr = formatTime(endMinutes % (24 * 60));
+                details = `Bedtime: ${bedtimeStr}, Target Wake-up: ${wakeupStr} (${cycles} cycles)`;
+            } else {
+                // Bedtime mode: user entered bedtime. The result time is WAKE-UP.
+                const wakeUpMinutes = parseTimeToMinutes(time); // result card time
+                startMinutes = inputMinutes; // user's entered bedtime
+                endMinutes = wakeUpMinutes;
+                if (endMinutes < startMinutes) endMinutes += 24 * 60;
+                const bedtimeStr = formatTime(startMinutes);
+                const wakeupStr = formatTime(endMinutes % (24 * 60));
+                details = `Bedtime: ${bedtimeStr}, Target Wake-up: ${wakeupStr} (${cycles} cycles)`;
+            }
 
-                let lastOut = 0.0;
-                for (let i = 0; i < bufferSize; i++) {
-                    const white = Math.random() * 2 - 1;
-                    if (type === 'rain') {
-                        lastOut = (lastOut + (0.02 * white)) / 1.02;
-                        data[i] = lastOut * 3.5;
-                    } else {
-                        data[i] = white * 0.15;
-                    }
+            // Build Date objects
+            const startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+            startDate.setMinutes(startMinutes);
+            const endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+            endDate.setMinutes(endMinutes);
+
+            const startStr = toGoogleFormat(startDate);
+            const endStr = toGoogleFormat(endDate);
+
+            const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+                '&text=' + encodeURIComponent('Sleep Cycle Calculator') +
+                '&dates=' + encodeURIComponent(startStr) + '/' + encodeURIComponent(endStr) +
+                '&details=' + encodeURIComponent(details);
+            window.open(url, '_blank');
+        }
+
+        // ===== Toast =====
+        function showToast(msg) {
+            let toast = document.querySelector('.toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.style.cssText = `
+                    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+                    background: var(--accent); color: #fff; padding: 12px 24px;
+                    border-radius: 50px; font-family: var(--font-body); font-size: .9rem;
+                    z-index: 9999; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+                    transition: opacity .3s; pointer-events: none;
+                `;
+                document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.style.opacity = '1';
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+        }
+
+        // ===== FAQ Accordion (with aria-expanded) =====
+        document.querySelectorAll('.faq-question').forEach((q) => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isOpen = item.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                // Toggle current
+                if (!isOpen) {
+                    item.classList.add('open');
+                    q.setAttribute('aria-expanded', 'true');
                 }
-
-                const noise = audioContext.createBufferSource();
-                noise.buffer = buffer;
-                noise.loop = true;
-
-                const gainNode = audioContext.createGain();
-                gainNode.gain.value = type === 'rain' ? 0.25 : 0.12;
-
-                noise.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                noise.start();
-                activeSoundNode = noise;
-
-            } else if (type === 'binaural') {
-                const merger = audioContext.createChannelMerger(2);
-                const oscL = audioContext.createOscillator();
-                oscL.frequency.value = 108;
-                const oscR = audioContext.createOscillator();
-                oscR.frequency.value = 112;
-                const gainNode = audioContext.createGain();
-                gainNode.gain.value = 0.08;
-
-                oscL.connect(merger, 0, 0);
-                oscR.connect(merger, 0, 1);
-                merger.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-
-                oscL.start();
-                oscR.start();
-
-                activeSoundNode = {
-                    stop: () => { oscL.stop(); oscR.stop(); },
-                    disconnect: () => { merger.disconnect(); }
-                };
-            }
-        }
-
-        // ========================= Modal System =========================
-        const modalOverlay = document.getElementById('modal-overlay');
-        const modalBody = document.getElementById('modal-body');
-
-        // Modal content for only the Contact modal (legal pages are now static links)
-        const modalContent = {
-            contact: `
-                <h2 class="modal-title">Contact Us</h2>
-                <div class="modal-body">
-                    <p>We'd love to hear from you!</p>
-                    <p>For general inquiries, support, or feedback, please email us at:</p>
-                    <p style="font-size:1.25rem; font-weight:bold; color: var(--violet);">supportsleepcalchq@gmail.com</p>
-                    <p>We typically respond within 2–3 business days.</p>
-                    <h3>Partnerships</h3>
-                    <p>For partnership or sponsorship inquiries, include "Partnership" in the subject line.</p>
-                </div>
-            `
-        };
-
-        function openModal(type) {
-            const content = modalContent[type];
-            if (content) {
-                modalBody.innerHTML = content;
-                modalOverlay.classList.add('open');
-                modalOverlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal() {
-            modalOverlay.classList.remove('open');
-            modalOverlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
+            });
+            // Keyboard support
+            q.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    q.click();
+                }
+            });
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // ========================= Initial Load =========================
+        // ===== Initialization =====
         document.addEventListener('DOMContentLoaded', () => {
+            buildNavLinks();
             calculateCycles();
+            // Open first FAQ by default
+            const firstFaq = document.querySelector('.faq-item');
+            if (firstFaq) {
+                firstFaq.classList.add('open');
+                firstFaq.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
+            }
         });
     </script>
 </body>
-</html>
+</html>	
