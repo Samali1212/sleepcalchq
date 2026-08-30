@@ -2093,13 +2093,27 @@
                 <span class="logo-badge">Pro</span>
             </a>
 
-            <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
-                <a href="#calculator-hub" class="active">Sleep Calculator</a>
-                <a href="#nap-optimizer">Power Naps</a>
-                <a href="#sound-synthesizer">Sleep Sounds</a>
-                <a href="#sleep-debt">Sleep Debt</a>
-                <a href="#science-guide">Sleep Science</a>
-            </nav>
+           <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
+    <!-- Dropdown Menu: Sleep Cycle Calculator -->
+    <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Sleep Cycle Calculator
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown-menu">
+            <a href="#calculator-hub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Sleep Cycle Calculator
+            </a>
+            <!-- Aage chal kar agar naye calculators add karne ho to yahan <a> tag daal sakte hain -->
+        </div>
+    </div>
+
+    <a href="#nap-optimizer">Power Naps</a>
+    <a href="#sound-synthesizer">Sleep Sounds</a>
+    <a href="#sleep-debt">Sleep Debt</a>
+    <a href="#science-guide">Sleep Science</a>
+</nav>
 
             <div class="header-actions">
                 <button id="theme-toggle" class="header-btn" aria-label="Toggle dark/light theme" aria-expanded="false" aria-controls="theme-icon">
