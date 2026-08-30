@@ -472,7 +472,99 @@
         }
 
         .mt-2 {
-            margin-top: 0.5rem;
+            margin-top: 0.5rem; /* ===================== Nav Dropdown Menu ===================== */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-dropdown-btn {
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.nav-dropdown-btn:hover,
+.nav-dropdown:hover .nav-dropdown-btn {
+    color: var(--violet);
+}
+
+.nav-dropdown-btn svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown:hover .nav-dropdown-btn svg {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-menu a {
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 10px !important;
+    font-size: 0.75rem !important;
+    color: var(--text) !important;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(99, 102, 241, 0.1) !important;
+    color: var(--violet) !important;
+}
+
+/* Mobile Dropdown Submenu */
+.mobile-nav-group {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.mobile-group-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--violet);
+    padding: 0.5rem 0.875rem 0.25rem;
+}
+.mobile-sub-link {
+    padding-left: 1.5rem !important;
+    font-size: 0.8125rem !important;
+    color: var(--text-muted) !important;
+}
         }
 
         .mt-3 {
