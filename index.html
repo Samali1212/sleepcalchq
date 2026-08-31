@@ -44,7 +44,66 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/assets/css/main.css">
 
-    <!-- JSON-LD Advanced Schema -->
+    <!-- Inline style for menu fixes (needed for mobile display) -->
+    <style>
+        /* ===== Home link visibility (Desktop & Mobile) ===== */
+        .nav-desktop a[href="/"],
+        .mobile-menu a[href="/"] {
+            display: inline-flex !important;
+            visibility: visible !important;
+        }
+
+        /* ===== Mobile menu styling ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: #0f172a;
+            padding: 1rem;
+            z-index: 9999;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .mobile-menu.active {
+            display: flex;
+        }
+        .mobile-menu a {
+            color: #e2e8f0;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .mobile-menu a:hover {
+            background: rgba(148, 163, 184, 0.1);
+        }
+
+        /* Desktop: hide mobile button & menu */
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+        /* Mobile: hide desktop nav, show hamburger */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none !important;
+            }
+            .mobile-menu-btn {
+                display: inline-flex !important;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Advanced Schema (fixed with proper closing) -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -160,7 +219,7 @@
     <!-- ===================== Header ===================== -->
     <header class="app-header">
         <div class="header-inner">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <div class="logo-icon">
                     <!-- moon-star icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg>
@@ -169,6 +228,7 @@
                 <span class="logo-badge">Pro</span>
             </a>
 
+            <!-- Fixed: added closing </nav> -->
             <nav class="nav-desktop" id="nav-desktop" aria-label="Main navigation">
                 <a href="/">Home</a>
                 <a href="#calculator-hub" class="active">Sleep Calculator</a>
@@ -176,7 +236,7 @@
                 <a href="#sound-synthesizer">Sleep Sounds</a>
                 <a href="#sleep-debt">Sleep Debt</a>
                 <a href="#science-guide">Sleep Science</a>
-                
+            </nav>
 
             <div class="header-actions">
                 <button id="theme-toggle" class="header-btn" aria-label="Toggle dark/light theme" aria-expanded="false" aria-controls="theme-icon">
@@ -228,7 +288,7 @@
                             I Must Wake At
                         </button>
                         <button onclick="switchMode('sleepAt')" id="tab-sleepAt" class="tab-btn" role="tab" aria-selected="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 9V2"/><path d="M4.93 10.93l1.41 1.41"/><path d="M20 12h-2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 9 9 9 9 0 1 1-9-9Z"/></svg>
                             I Go to Bed At
                         </button>
                         <button onclick="switchMode('sleepNow')" id="tab-sleepNow" class="tab-btn" role="tab" aria-selected="false">
@@ -707,5 +767,30 @@
 
     <!-- ===================== External JavaScript ===================== -->
     <script src="/assets/js/main.js"></script>
+
+    <!-- Inline script for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuBtn = document.getElementById('mobile-menu-btn');
+            var mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                    menuBtn.setAttribute('aria-expanded', !isExpanded);
+                    mobileMenu.classList.toggle('active');
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.header-inner') && !event.target.closest('#mobile-menu')) {
+                        mobileMenu.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
