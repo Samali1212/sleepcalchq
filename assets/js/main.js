@@ -639,3 +639,621 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateCycles();
     loadTools();
 });
+
+// ================================================================
+// 1. STATE
+// ================================================================
+let currentMode = 'wakeAt';
+let latencyMinutes = 15;
+let audioContext = null;
+let audioNodes = {};
+let audioActive = false;
+let activeSound = null;
+let napTimer = null;
+let audioUnlocked = false;
+
+// ================================================================
+// 2. THEME TOGGLE
+// ================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('sleepcalchq-theme');
+    if (savedTheme === 'light') {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        if (themeIcon) {
+            themeIcon.innerHTML =
+                '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        }
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            const isDark = body.classList.contains('dark');
+            if (isDark) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                localStorage.setItem('sleepcalchq-theme', 'light');
+                if (themeIcon) {
+                    themeIcon.innerHTML =
+                        '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+                }
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                localStorage.setItem('sleepcalchq-theme', 'dark');
+                if (themeIcon) {
+                    themeIcon.innerHTML =
+                        '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+                }
+            }
+        });
+    }
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', function() {
+            const open = mobileMenu.classList.toggle('open');
+            this.setAttribute('aria-expanded', open);
+        });
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (mobileMenu) mobileMenu.classList.remove('open');
+            if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Init latency display
+    const slider = document.getElementById('latency-slider');
+    if (slider) {
+        latencyMinutes = parseInt(slider.value, 10);
+        document.getElementById('latency-val').textContent = latencyMinutes + ' min';
+    }
+
+    // Set default time based on mode
+    updateTimeLabelAndDefault();
+
+    // Auto-run calculation on page load
+    setTimeout(function() {
+        calculateCycles();
+    }, 100);
+});
+
+// ================================================================
+// 3. MODE SWITCHING
+// ================================================================
+function switchMode(mode) {
+    currentMode = mode;
+    // Update tabs
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
+    const tabMap = {
+        'wakeAt': 'tab-wakeAt',
+        'sleepAt': 'tab-sleepAt',
+        'sleepNow': 'tab-sleepNow',
+        'napMode': 'tab-napMode'
+    };
+    const activeTab = document.getElementById(tabMap[mode]);
+    if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-selected', 'true');
+    }
+
+    updateTimeLabelAndDefault();
+    // Auto-recalculate on mode switch
+    setTimeout(function() {
+        calculateCycles();
+    }, 50);
+}
+
+function updateTimeLabelAndDefault() {
+    const label = document.getElementById('time-label');
+    const input = document.getElementById('target-time');
+    if (!label || !input) return;
+
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const currentTime = h + ':' + m;
+
+    switch (currentMode) {
+        case 'wakeAt':
+            label.textContent = 'Shift Start Time (wake by then)';
+            input.value = '06:30';
+            break;
+        case 'sleepAt':
+            label.textContent = 'Shift End Time (go to bed after)';
+            input.value = '07:00';
+            break;
+        case 'sleepNow':
+            label.textContent = 'Current Time (you\'re sleeping now)';
+            input.value = currentTime;
+            break;
+        case 'napMode':
+            label.textContent = 'Current Time (nap now)';
+            input.value = currentTime;
+            break;
+        default:
+            label.textContent = 'Target Time';
+            input.value = '06:30';
+    }
+}
+
+// ================================================================
+// 4. LATENCY SLIDER
+// ================================================================
+function updateLatency(val) {
+    latencyMinutes = parseInt(val, 10);
+    document.getElementById('latency-val').textContent = latencyMinutes + ' min';
+}
+
+// ================================================================
+// 5. CORE CALCULATION
+// ================================================================
+function calculateCycles() {
+    const targetInput = document.getElementById('target-time');
+    if (!targetInput || !targetInput.value) {
+        alert('Please enter a time.');
+        return;
+    }
+
+    const targetParts = targetInput.value.split(':');
+    if (targetParts.length !== 2) {
+        alert('Invalid time format.');
+        return;
+    }
+    let targetHour = parseInt(targetParts[0], 10);
+    let targetMinute = parseInt(targetParts[1], 10);
+    if (isNaN(targetHour) || isNaN(targetMinute)) {
+        alert('Invalid time.');
+        return;
+    }
+
+    const latency = latencyMinutes;
+
+    const grid = document.getElementById('cards-grid');
+    const resultsArea = document.getElementById('results-area');
+    const resultsTitle = document.getElementById('results-title');
+    const resultsSubtitle = document.getElementById('results-subtitle');
+
+    if (!grid) return;
+
+    let cycleOptions = [];
+    if (currentMode === 'wakeAt') {
+        cycleOptions = [3, 4, 5, 6];
+    } else if (currentMode === 'sleepAt') {
+        cycleOptions = [3, 4, 5, 6];
+    } else if (currentMode === 'sleepNow') {
+        cycleOptions = [3, 4, 5, 6];
+    } else if (currentMode === 'napMode') {
+        cycleOptions = [0];
+    }
+
+    let cardsHtml = '';
+    const cycleLength = 90;
+
+    if (currentMode === 'napMode') {
+        const now = new Date();
+        now.setHours(targetHour, targetMinute, 0, 0);
+        const napEnd = new Date(now.getTime() + 20 * 60000);
+        const napEndStr = formatTime(napEnd);
+        cardsHtml += `
+            <div class="cycle-card-result">
+                <div class="cycle-label">Power Nap</div>
+                <div class="cycle-time">${napEndStr}</div>
+                <div class="cycle-desc">20 min nap · wake refreshed</div>
+                <div class="cycle-badge">⏳ 20m</div>
+            </div>
+        `;
+        resultsTitle.innerHTML =
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Nap Wake Time`;
+        resultsSubtitle.textContent = 'Wake up after a 20-minute power nap. Avoid deep sleep.';
+        grid.innerHTML = cardsHtml;
+        resultsArea.classList.add('visible');
+        return;
+    }
+
+    const baseTime = new Date();
+    baseTime.setHours(targetHour, targetMinute, 0, 0);
+
+    for (let i = 0; i < cycleOptions.length; i++) {
+        const cycles = cycleOptions[i];
+        let resultTime = new Date(baseTime);
+        let label = '';
+        let desc = '';
+
+        if (currentMode === 'wakeAt') {
+            const totalMinutes = cycles * cycleLength + latency;
+            resultTime.setMinutes(resultTime.getMinutes() - totalMinutes);
+            label = cycles + ' cycles';
+            desc = 'Go to bed at this time';
+        } else if (currentMode === 'sleepAt' || currentMode === 'sleepNow') {
+            const totalMinutes = latency + cycles * cycleLength;
+            resultTime.setMinutes(resultTime.getMinutes() + totalMinutes);
+            label = cycles + ' cycles';
+            desc = 'Wake up at this time';
+        }
+
+        const timeStr = formatTime(resultTime);
+        const totalSleepMinutes = cycles * cycleLength;
+        const hours = Math.floor(totalSleepMinutes / 60);
+        const mins = totalSleepMinutes % 60;
+        const durationStr = hours + 'h ' + (mins > 0 ? mins + 'm' : '');
+
+        cardsHtml += `
+            <div class="cycle-card-result">
+                <div class="cycle-label">${label}</div>
+                <div class="cycle-time">${timeStr}</div>
+                <div class="cycle-desc">${desc} · ${durationStr} sleep</div>
+                <div class="cycle-badge">~${cycles} × 90m</div>
+            </div>
+        `;
+    }
+
+    if (currentMode === 'wakeAt') {
+        resultsTitle.innerHTML =
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg> Bedtimes Before Your Shift`;
+        resultsSubtitle.textContent = 'Go to bed at one of these times to wake at the end of a cycle.';
+    } else if (currentMode === 'sleepAt') {
+        resultsTitle.innerHTML =
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg> Wake Times After Your Shift`;
+        resultsSubtitle.textContent = 'Wake at one of these times to complete a full cycle.';
+    } else {
+        resultsTitle.innerHTML =
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/></svg> Wake Times`;
+        resultsSubtitle.textContent = 'Wake at the end of a cycle for less grogginess.';
+    }
+
+    grid.innerHTML = cardsHtml;
+    resultsArea.classList.add('visible');
+}
+
+function formatTime(date) {
+    let h = date.getHours();
+    let m = date.getMinutes();
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    m = String(m).padStart(2, '0');
+    return h + ':' + m + ' ' + ampm;
+}
+
+// ================================================================
+// 6. SLEEP DEBT CALCULATOR
+// ================================================================
+function calculateSleepDebt() {
+    const neededSelect = document.getElementById('debt-needed');
+    const actualSelect = document.getElementById('debt-actual');
+    const resultDiv = document.getElementById('debt-result');
+
+    if (!neededSelect || !actualSelect || !resultDiv) return;
+
+    const needed = parseFloat(neededSelect.value);
+    const actual = parseFloat(actualSelect.value);
+    const deficitPerDay = needed - actual;
+    const weeklyDeficit = deficitPerDay * 7;
+
+    const absDeficit = Math.abs(weeklyDeficit);
+    const hours = Math.floor(absDeficit);
+    const minutes = Math.round((absDeficit - hours) * 60);
+
+    let message = '';
+    if (weeklyDeficit > 0) {
+        message =
+            `You are carrying an estimated <span class="debt-number">${hours}h ${minutes}m</span> of sleep deficit this week. Consider adding 30–45 minutes to your sleep on off‑days.`;
+    } else if (weeklyDeficit < 0) {
+        message =
+            `You are getting <span class="debt-number">${hours}h ${minutes}m</span> more sleep than your target. Great recovery!`;
+    } else {
+        message = `You are on track! Your weekly sleep matches your target.`;
+    }
+
+    resultDiv.innerHTML = `<p style="margin:0;">${message}</p>`;
+    resultDiv.classList.add('visible');
+}
+
+// ================================================================
+// 7. POWER NAP (AudioContext unlocked at user click)
+// ================================================================
+let napAudioCtx = null;
+
+function unlockAudioContext() {
+    if (!napAudioCtx) {
+        try {
+            napAudioCtx = new(window.AudioContext || window.webkitAudioContext)();
+        } catch (e) { /* ignore */ }
+    }
+    if (napAudioCtx && napAudioCtx.state === 'suspended') {
+        napAudioCtx.resume().catch(function(e) { /* ignore */ });
+    }
+    audioUnlocked = true;
+}
+
+function startQuickNap(minutes) {
+    // Unlock audio context on user click for alarm sound
+    unlockAudioContext();
+
+    if (napTimer) {
+        clearTimeout(napTimer);
+        napTimer = null;
+        alert('Nap timer cleared.');
+        return;
+    }
+
+    const now = new Date();
+    const end = new Date(now.getTime() + minutes * 60000);
+    const endStr = formatTime(end);
+
+    if (confirm(`Set a ${minutes}-minute nap alarm for ${endStr}?`)) {
+        alert(`Nap set for ${endStr}. I'll remind you.`);
+        napTimer = setTimeout(function() {
+            alert(`⏰ Your ${minutes}-minute nap is over! Wake up gently.`);
+            napTimer = null;
+            // Play beep using pre-unlocked context
+            try {
+                const ctx = napAudioCtx || new(window.AudioContext || window.webkitAudioContext)();
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.frequency.value = 880;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                osc.start(ctx.currentTime);
+                osc.stop(ctx.currentTime + 0.5);
+            } catch (e) { /* ignore */ }
+        }, minutes * 60000);
+    }
+}
+
+// ================================================================
+// 8. AMBIENT AUDIO (Web Audio API)
+// ================================================================
+function toggleAudio(type) {
+    // Unlock audio context on user interaction
+    unlockAudioContext();
+
+    if (audioActive && activeSound === type) {
+        stopAudio();
+        return;
+    }
+
+    // Stop any existing audio
+    stopAudio();
+
+    try {
+        const ctx = new(window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') {
+            ctx.resume();
+        }
+        audioContext = ctx;
+
+        let oscillator = null;
+        let gainNode = ctx.createGain();
+        gainNode.gain.value = 0.15;
+        gainNode.connect(ctx.destination);
+
+        let bufferSource = null;
+
+        if (type === 'white') {
+            const bufferSize = 2 * ctx.sampleRate;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * 0.3;
+            }
+            bufferSource = ctx.createBufferSource();
+            bufferSource.buffer = buffer;
+            bufferSource.loop = true;
+            bufferSource.connect(gainNode);
+            bufferSource.start();
+            audioNodes.buffer = bufferSource;
+        } else if (type === 'rain') {
+            const bufferSize = 2 * ctx.sampleRate;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const val = (Math.random() * 2 - 1) * 0.2;
+                data[i] = val + (Math.random() > 0.95 ? (Math.random() * 0.3) : 0);
+            }
+            bufferSource = ctx.createBufferSource();
+            bufferSource.buffer = buffer;
+            bufferSource.loop = true;
+            bufferSource.connect(gainNode);
+            bufferSource.start();
+            audioNodes.buffer = bufferSource;
+        } else if (type === 'binaural') {
+            const carrierFreq = 200;
+            const beatFreq = 4;
+
+            const oscL = ctx.createOscillator();
+            oscL.frequency.value = carrierFreq;
+            oscL.type = 'sine';
+
+            const oscR = ctx.createOscillator();
+            oscR.frequency.value = carrierFreq + beatFreq;
+            oscR.type = 'sine';
+
+            const gainL = ctx.createGain();
+            gainL.gain.value = 0.1;
+            const gainR = ctx.createGain();
+            gainR.gain.value = 0.1;
+
+            const merger = ctx.createChannelMerger(2);
+
+            oscL.connect(gainL);
+            gainL.connect(merger, 0, 0);
+            oscR.connect(gainR);
+            gainR.connect(merger, 0, 1);
+
+            merger.connect(ctx.destination);
+
+            oscL.start();
+            oscR.start();
+
+            audioNodes.oscL = oscL;
+            audioNodes.oscR = oscR;
+            audioNodes.gainL = gainL;
+            audioNodes.gainR = gainR;
+            audioNodes.merger = merger;
+        }
+
+        document.querySelectorAll('.sound-btn').forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+        const btnMap = { 'rain': 'btn-sound-rain', 'white': 'btn-sound-white', 'binaural': 'btn-sound-binaural' };
+        const activeBtn = document.getElementById(btnMap[type]);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        document.getElementById('sound-status').textContent = '▶ Playing ' + type;
+        audioActive = true;
+        activeSound = type;
+
+        setTimeout(function() {
+            if (audioActive && activeSound === type) {
+                stopAudio();
+            }
+        }, 60 * 60000);
+
+    } catch (e) {
+        console.warn('Audio error:', e);
+        alert('Audio could not be started. Please try again or use a different browser.');
+    }
+}
+
+function stopAudio() {
+    try {
+        if (audioNodes.buffer) {
+            audioNodes.buffer.stop();
+            audioNodes.buffer.disconnect();
+            delete audioNodes.buffer;
+        }
+        if (audioNodes.oscL) {
+            audioNodes.oscL.stop();
+            audioNodes.oscL.disconnect();
+            delete audioNodes.oscL;
+        }
+        if (audioNodes.oscR) {
+            audioNodes.oscR.stop();
+            audioNodes.oscR.disconnect();
+            delete audioNodes.oscR;
+        }
+        if (audioNodes.gainL) {
+            audioNodes.gainL.disconnect();
+            delete audioNodes.gainL;
+        }
+        if (audioNodes.gainR) {
+            audioNodes.gainR.disconnect();
+            delete audioNodes.gainR;
+        }
+        if (audioNodes.merger) {
+            audioNodes.merger.disconnect();
+            delete audioNodes.merger;
+        }
+        if (audioContext && audioContext.state !== 'closed') {
+            audioContext.close();
+            audioContext = null;
+        }
+    } catch (e) { /* ignore */ }
+
+    document.querySelectorAll('.sound-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+    document.getElementById('sound-status').textContent = 'Audio Idle';
+    audioActive = false;
+    activeSound = null;
+}
+
+// ================================================================
+// 9. MODALS
+// ================================================================
+function openModal(type) {
+    const overlay = document.getElementById('modal-overlay');
+    const body = document.getElementById('modal-body');
+    if (!overlay || !body) return;
+
+    let content = '';
+    switch (type) {
+        case 'privacy':
+            content =
+                `<h3>Privacy Policy</h3><p>SleepCalChq does not collect, store, or transmit any personal data. All calculations are performed locally in your browser. No cookies are used for tracking.</p>`;
+            break;
+        case 'terms':
+            content =
+                `<h3>Terms of Service</h3><p>This tool is provided for educational and informational purposes only. You assume full responsibility for your sleep decisions and health outcomes.</p>`;
+            break;
+        case 'methodology':
+            content =
+                `<h3>Editorial Methodology</h3><p>Our content is based on peer‑reviewed sleep science and chronobiology research. We cite primary sources and update our models as new evidence emerges.</p>`;
+            break;
+        case 'medical':
+            content =
+                `<h3>Medical Disclaimer</h3><p>SleepCalChq is not a medical device. It does not diagnose or treat sleep disorders. Always consult a qualified healthcare provider for medical advice.</p>`;
+            break;
+        case 'contact':
+            content =
+                `<h3>Contact</h3><p>For inquiries, please email: <a href="mailto:supportsleepcalchq@gmail.com">supportsleepcalchq@gmail.com</a></p>`;
+            break;
+        case 'caffeine':
+            content =
+                `<h3>Caffeine Halflife Clock</h3><p>Coming soon: an interactive tool to estimate caffeine levels in your blood based on consumption time and half‑life (≈5–7 hours).</p>`;
+            break;
+        case 'jetlag':
+            content =
+                `<h3>Shift Transition Planner</h3><p>Coming soon: a planner to help you transition between day, night, and rotating shifts with minimal circadian disruption.</p>`;
+            break;
+        case 'melatonin':
+            content =
+                `<h3>Circadian Melatonin Quiz</h3><p>Coming soon: a short quiz to help you understand your natural chronotype and optimal shift alignment.</p>`;
+            break;
+        case 'adenosine':
+            content =
+                `<h3>Adenosine Clearing</h3><p>Coming soon: an educational module on how adenosine builds up during wakefulness and is cleared during sleep.</p>`;
+            break;
+        case 'clinical':
+            content =
+                `<h3>Clinical References</h3><p>Coming soon: a curated list of peer‑reviewed studies and clinical guidelines on shift work sleep disorder.</p>`;
+            break;
+        default:
+            content = `<h3>Information</h3><p>This feature is coming soon.</p>`;
+    }
+
+    body.innerHTML = content;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
