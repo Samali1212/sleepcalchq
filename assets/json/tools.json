@@ -5,4 +5,11 @@
         "description": "Estimate bedtime and wake times using 90-minute cycles.",
         "category": "Sleep Calculators"
     }
+
+    {
+        "title": "Sleep Calculator for Shift Workers",
+        "url": "/sleep-calculator-shift-workers/",
+        "description": "Estimate bedtime and wake times using 90-minute cycles.",
+        "category": "Sleep Calculators"
+    }
 ]
